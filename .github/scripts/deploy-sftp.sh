@@ -64,7 +64,7 @@ set sftp:auto-confirm yes
 set net:timeout 30
 set net:max-retries 3
 set net:reconnect-interval-base 5
-mirror --reverse --delete --verbose \
+mirror --reverse --delete --size-only --verbose \
   --exclude-glob .git/ \
   --exclude-glob .github/ \
   --exclude .gitignore \
