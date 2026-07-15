@@ -1,0 +1,83 @@
+{
+  "name": "EIPV - Eglise Internationale Parole de Vie",
+  "short_name": "EIPV",
+  "description": "Enseignements, archives, contact et ressources de l'Eglise Internationale Parole de Vie.",
+  "lang": "fr",
+  "dir": "ltr",
+  "id": "/",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "portrait",
+  "background_color": "#FDF8F0",
+  "theme_color": "#1E3A5F",
+  "categories": ["education", "lifestyle", "news"],
+  "icons": [
+    {
+      "src": "/images/pwa/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/pwa/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/pwa/maskable-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/images/pwa/maskable-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Enseignements",
+      "short_name": "Messages",
+      "description": "Voir les enseignements recents",
+      "url": "/enseignements.html",
+      "icons": [
+        {
+          "src": "/images/pwa/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Archives",
+      "short_name": "Archives",
+      "description": "Retrouver les messages classes",
+      "url": "/archives.html",
+      "icons": [
+        {
+          "src": "/images/pwa/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Contacter l'EIPV",
+      "url": "/contact.html",
+      "icons": [
+        {
+          "src": "/images/pwa/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}

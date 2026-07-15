@@ -1,0 +1,36 @@
+name: Deploy → abamafrancois.org (one.com)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  deploy:
+    name: Upload via SFTP
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install lftp
+        run: sudo apt-get install -y lftp
+
+      - name: Deploy via SFTP
+        env:
+          SFTP_HOST: ${{ secrets.SFTP_HOST }}
+          SFTP_USER: ${{ secrets.SFTP_USER }}
+          SFTP_PASS: ${{ secrets.SFTP_PASS }}
+        run: bash .github/scripts/deploy-sftp.sh
+
+      - name: Summary
+        if: success()
+        run: |
+          echo "Site    : https://abamafrancois.org"
+          echo "Commit  : ${{ github.sha }}"
+          echo "Heure   : $(date -u '+%Y-%m-%d %H:%M UTC')"
