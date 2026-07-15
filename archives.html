@@ -276,6 +276,10 @@ const ARCHIVE = [
   { type:"video", title:"La puissance de la prière intercessive", cat:"Restauration", date:"2026-05-28", dur:"1:00:40", yt:"XumGYkj82Wc" },
   { type:"video", title:"La puissance de l'exception et de la protection", cat:"Protection", date:"2026-06-14", dur:"", yt:"YjTGSPIfOYg" },
   { type:"video", title:"La guérison divine : votre héritage en Christ", cat:"Guérison", date:"2026-04-15", dur:"1:10:00", yt:"KMINvZn1efA" },
+  { type:"audio", title:"La main de Dieu", cat:"Foi", date:"2026-07-15", dur:"", audio:"audios/lamaindedieu.mpeg", isNew:true },
+  { type:"audio", title:"Les défis — 07", cat:"Foi", date:"2026-07-15", dur:"", audio:"audios/lesdefit_07.mpeg", isNew:true },
+  { type:"audio", title:"C'est possible", cat:"Foi", date:"2026-07-15", dur:"", audio:"audios/cestpossible.mpeg", isNew:true },
+  { type:"audio", title:"Vaincre par la mentalité — 07", cat:"Foi", date:"2026-07-15", dur:"", audio:"audios/Vaincreparlamentalitee_07.mpeg", isNew:true },
   { type:"audio", title:"Délivrance et liberté en Christ", cat:"Délivrance", date:"2026-03-08", dur:"55:00" },
   { type:"video", title:"Le Royaume de Dieu en vous", cat:"Le Royaume", date:"2026-03-12", dur:"54:20", yt:"hOao_JMQxas" },
   { type:"video", title:"Shammah Kabowd Power : Apothéose", cat:"Gloire", date:"2026-06-07", dur:"", yt:"uoE0Bx3dgg0" },
@@ -359,9 +363,10 @@ function rowEl(a){
   el.setAttribute("data-share-title", title+" — EIPV");
   el.setAttribute("data-share-url","https://eipv.org/archives");
   if(a.type==="video") el.setAttribute("data-share-video-id", a.yt);
+  var nBadge = a.isNew ? '<span style="display:inline-block;background:#E53E3E;color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.07em;padding:2px 9px;border-radius:99px;text-transform:uppercase;vertical-align:middle;margin-left:7px">Nouveau</span>' : '';
   el.innerHTML =
     '<div class="arch-date"><div class="dd">'+dayOf(a.date)+'</div><div class="mm">'+months[monthOf(a.date)]+' '+yearOf(a.date)+'</div></div>'+
-    '<div class="arch-main"><h3>'+title+'</h3>'+
+    '<div class="arch-main"><h3>'+title+nBadge+'</h3>'+
       '<div class="meta-row">'+trText(typeBadge[a.type]).replace("Vidéo", trText("Vidéo")).replace("Audio", trText("Audio")).replace("Texte", trText("Texte"))+'<span class="dot"></span>'+cat+(a.dur?'<span class="dot"></span>'+a.dur:'')+'</div></div>'+
     '<div class="arch-actions">'+actionBtn(a)+(a.type==="audio"?audioShareGroup(a):shareGroup())+'</div>';
   return el;
@@ -380,8 +385,9 @@ function cardEl(a){
   var thumb = a.type==="video"
     ? '<button class="media-thumb" data-video="https://www.youtube.com/embed/'+a.yt+'" data-video-title="'+title.replace(/"/g,"&quot;")+'" data-video-cat="'+cat+' · YouTube"><div class="ph ph-cross" data-label="[ MINIATURE ]"></div><div class="thumb-badges">'+typeBadge[a.type].replace("Vidéo", trText("Vidéo")).replace("Audio", trText("Audio")).replace("Texte", trText("Texte"))+'</div>'+(a.dur?'<span class="thumb-duration">'+a.dur+'</span>':'')+'<span class="play-btn">'+play+'</span></button>'
     : '<div class="media-thumb"><div class="ph ph-cross" data-label="[ VISUEL ]"></div><div class="thumb-badges">'+typeBadge[a.type].replace("Vidéo", trText("Vidéo")).replace("Audio", trText("Audio")).replace("Texte", trText("Texte"))+'</div>'+(a.dur?'<span class="thumb-duration">'+a.dur+'</span>':'')+'</div>';
+  var nBadgeCard = a.isNew ? '<span style="display:inline-block;background:#E53E3E;color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.07em;padding:2px 9px;border-radius:99px;text-transform:uppercase;vertical-align:middle;margin-left:7px">Nouveau</span>' : '';
   el.innerHTML = thumb +
-    '<div class="media-body"><span class="media-cat">'+cat+'</span><h3 class="media-title">'+title+'</h3>'+
+    '<div class="media-body"><span class="media-cat">'+cat+'</span><h3 class="media-title">'+title+nBadgeCard+'</h3>'+
     '<div class="media-foot"><span class="meta-row">'+dayOf(a.date)+' '+months[monthOf(a.date)]+' '+yearOf(a.date)+'</span>'+(a.type==="audio"?audioShareGroup(a):shareGroup())+'</div></div>';
   return el;
 }
