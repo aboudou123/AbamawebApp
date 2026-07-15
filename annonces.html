@@ -144,13 +144,48 @@
     </div>
 
     <div class="annonce-video-wrap reveal">
-      <video
-        src="/videos/Invitation_Version.mp4"
-        controls
-        preload="metadata"
-        playsinline>
-      </video>
+      <div class="video-facade" data-src="/videos/Invitation_Version.mp4" role="button" tabindex="0"
+           aria-label="Lire la vidéo d'invitation : Convention Annuelle des Femmes 2026"
+           style="position:relative;width:100%;aspect-ratio:16/9;cursor:pointer;background:#000">
+        <img src="/images/invitation-poster.jpg" alt="Invitation — Convention Annuelle des Femmes 2026"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <span aria-hidden="true"
+              style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.05) 0%,rgba(0,0,0,0.25) 100%)"></span>
+        <span class="video-facade-play" aria-hidden="true"
+              style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;background:rgba(201,168,76,0.95);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 40px rgba(0,0,0,0.45);transition:transform 0.25s ease,background 0.25s ease">
+          <svg viewBox="0 0 24 24" width="34" height="34" fill="#fff" style="margin-left:4px"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      </div>
     </div>
+    <style>
+      .video-facade:hover .video-facade-play,
+      .video-facade:focus-visible .video-facade-play { transform:translate(-50%,-50%) scale(1.08); background:rgba(201,168,76,1); }
+      .video-facade:focus-visible { outline:3px solid rgba(201,168,76,0.9); outline-offset:3px; }
+    </style>
+    <script>
+      (function () {
+        function mount(facade) {
+          if (facade.dataset.loaded) return;
+          facade.dataset.loaded = '1';
+          var video = document.createElement('video');
+          video.src = facade.dataset.src;
+          video.controls = true;
+          video.autoplay = true;
+          video.playsInline = true;
+          video.setAttribute('playsinline', '');
+          video.style.cssText = 'width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#000';
+          facade.replaceWith(video);
+          var p = video.play();
+          if (p && p.catch) { p.catch(function () {}); }
+        }
+        document.querySelectorAll('.video-facade').forEach(function (facade) {
+          facade.addEventListener('click', function () { mount(facade); });
+          facade.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); mount(facade); }
+          });
+        });
+      })();
+    </script>
 
     <div class="reveal" style="display:flex;align-items:center;gap:0.65rem;margin-top:1.8rem;justify-content:center">
       <div style="width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid var(--gold,#C9A84C);flex-shrink:0">
