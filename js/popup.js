@@ -1,6 +1,6 @@
 (function () {
   /* ══ CONFIGURATION ═══════════════════════════════════════════════ */
-  var IMAGE_URL  = "/images/annuel_femme.jpg";
+  var IMAGE_URL  = "/images/07/im_1.jpeg";
   var TARGET_URL = "/convention-annuelle-femmes-2026";
   /* ════════════════════════════════════════════════════════════════ */
 
