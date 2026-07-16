@@ -77,9 +77,13 @@
   .pastor-photo .badge-float .n { font-family: var(--serif); font-weight: 700; font-size: 1.15rem; color: var(--primary-900); line-height: 1.1; margin-bottom: 4px; min-height: 2.2em; }
   .pastor-photo .badge-float .r { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-700); }
   .values { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.7rem; margin-top: 1.8rem; }
-  .value { padding: 0.95rem 1.1rem; border: 1px solid var(--line); background: #fff; border-radius: 13px; box-shadow: var(--shadow-soft); }
+  .value { position: relative; display: block; padding: 0.95rem 2.1rem 0.95rem 1.1rem; border: 1px solid var(--line); background: #fff; border-radius: 13px; box-shadow: var(--shadow-soft); text-decoration: none; transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease; }
+  .value:hover, .value:focus-visible { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(0,0,0,0.12); border-color: rgba(201,168,76,0.55); }
+  .value:focus-visible { outline: 3px solid rgba(201,168,76,0.9); outline-offset: 3px; }
   .value .vt { font-weight: 700; color: var(--primary-900); font-size: 0.95rem; }
   .value .vd { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+  .value .varr { position: absolute; top: 50%; right: 0.95rem; transform: translateY(-50%); width: 17px; height: 17px; color: var(--gold-700, #a9862f); opacity: 0.55; transition: opacity 0.22s ease, transform 0.22s ease; }
+  .value:hover .varr, .value:focus-visible .varr { opacity: 1; transform: translateY(-50%) translateX(3px); }
 
   /* ── Events ── */
   .event { display: flex; gap: 1.1rem; align-items: center; padding: 1.1rem 1.3rem; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); transition: transform .25s ease, box-shadow .25s ease, border-color .2s ease; }
@@ -207,10 +211,10 @@
         <p class="kicker" style="margin-top:0.7rem">Jérémie 29:11</p>
       </blockquote>
       <div class="values">
-        <div class="value"><div class="vt">Enseigner</div><div class="vd">La Parole avec clarté</div></div>
-        <div class="value"><div class="vt">Prier</div><div class="vd">Intercéder pour les nations</div></div>
-        <div class="value"><div class="vt">Accompagner</div><div class="vd">Les familles et les jeunes</div></div>
-        <div class="value"><div class="vt">Annoncer</div><div class="vd">L'Évangile à tous</div></div>
+        <a class="value" href="../enseignements.html" aria-label="Enseigner — voir les derniers enseignements"><div class="vt">Enseigner</div><div class="vd">La Parole avec clarté</div><svg class="varr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a class="value" href="../enseignements.html#sec-audio" aria-label="Messages audio — écouter les derniers messages"><div class="vt">Messages audio</div><div class="vd">Écouter les derniers messages</div><svg class="varr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a class="value" href="../archives.html" aria-label="Archives — réécouter les messages audio"><div class="vt">Archives</div><div class="vd">Réécouter les messages audio</div><svg class="varr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a class="value" href="../annonces.html" aria-label="Annoncer — voir les annonces"><div class="vt">Annoncer</div><div class="vd">L'Évangile à tous</div><svg class="varr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
   </div>
