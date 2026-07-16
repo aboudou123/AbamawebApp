@@ -64,16 +64,36 @@ set sftp:auto-confirm yes
 set net:timeout 30
 set net:max-retries 3
 set net:reconnect-interval-base 5
-# NB: option lftp = --ignore-time (compare par TAILLE, ignore l'horodatage).
-#     NE PAS utiliser --size-only : c'est une option de rsync, PAS de lftp mirror.
-#     lftp planterait avec « unrecognized option '--size-only' ».
-#     --ignore-time evite de tout re-uploader a cause des mtimes non fiables du serveur.
-mirror --reverse --delete --ignore-time --verbose \
+
+# ── STRATEGIE EN 2 PASSES (robuste, ne saute jamais un changement de contenu) ──
+#
+# Contexte : sur le runner CI, git pose une mtime "maintenant" a chaque checkout.
+#   - Comparaison par DATE seule  -> tout est re-uploade a chaque fois (lent).
+#   - Comparaison par TAILLE seule (--ignore-time / --size-only) -> SAUTE tout
+#     fichier dont la taille n'a pas change, MEME si le contenu a change.
+#     (Bug reel vecu : une modif CSS a garde la taille exacte -> non deploye.)
+#
+# Solution : traiter separement les petits fichiers et les grosses videos.
+
+# Passe 1 : TOUT SAUF /videos/ — comparaison par defaut (taille + date).
+#   Les fichiers (HTML/CSS/JS/images) sont petits : les re-uploader a chaque
+#   deploiement est negligeable et GARANTIT que le contenu en ligne est a jour,
+#   meme si une modif ne change pas la taille du fichier.
+#   NE JAMAIS ajouter --ignore-time ni --size-only ici (voir bug ci-dessus).
+mirror --reverse --delete --verbose \
   --exclude-glob .git/ \
   --exclude-glob .github/ \
+  --exclude-glob videos/ \
   --exclude .gitignore \
   --exclude README.md \
   . ${REMOTE}
+
+# Passe 2 : UNIQUEMENT /videos/ — comparaison par TAILLE (--ignore-time).
+#   Les videos font des dizaines/centaines de Mo : on evite de les re-uploader
+#   inutilement. Une video modifiee change de taille, donc elle sera bien poussee.
+mirror --reverse --delete --ignore-time --verbose \
+  videos/ ${REMOTE}videos/
+
 bye
 LFTP_DEPLOY
 
