@@ -77,23 +77,23 @@
   .pastor-photo .badge-float .n { font-family: var(--serif); font-weight: 700; font-size: 1.15rem; color: var(--primary-900); line-height: 1.1; margin-bottom: 4px; min-height: 2.2em; }
   .pastor-photo .badge-float .r { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-700); }
   .values { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem; margin-top: 1.8rem; }
-  .value { position: relative; display: flex; align-items: center; gap: 0.8rem; padding: 1rem 2.3rem 1rem 0.95rem; border: 1px solid rgba(201,168,76,0.3); border-radius: 16px; background: linear-gradient(152deg, #ffffff 0%, #fbf6ea 100%); box-shadow: 0 4px 14px rgba(30,58,95,0.07); text-decoration: none; overflow: hidden; isolation: isolate; transition: transform 0.28s cubic-bezier(0.2,0.7,0.3,1), box-shadow 0.28s ease, border-color 0.28s ease; }
-  .value::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--gold-300), var(--gold)); transform: scaleX(0); transform-origin: left; transition: transform 0.28s ease; }
+  .value { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 0.7rem; padding: 1.05rem 1.05rem 1.15rem; border: 1px solid rgba(201,168,76,0.3); border-radius: 16px; background: linear-gradient(152deg, #ffffff 0%, #fbf6ea 100%); box-shadow: 0 4px 14px rgba(30,58,95,0.07); text-decoration: none; overflow: hidden; isolation: isolate; transition: transform 0.28s cubic-bezier(0.2,0.7,0.3,1), box-shadow 0.28s ease, border-color 0.28s ease; }
+  .value::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--gold-300), var(--gold)); transform: scaleY(0); transform-origin: top; transition: transform 0.28s ease; }
   .value::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(152deg, rgba(201,168,76,0.13), rgba(30,58,95,0.06)); opacity: 0; transition: opacity 0.28s ease; }
   .value:hover, .value:focus-visible { transform: translateY(-4px); box-shadow: 0 20px 42px rgba(30,58,95,0.17), 0 0 0 1px rgba(201,168,76,0.4); border-color: rgba(201,168,76,0.6); }
-  .value:hover::before, .value:focus-visible::before { transform: scaleX(1); }
+  .value:hover::before, .value:focus-visible::before { transform: scaleY(1); }
   .value:hover::after, .value:focus-visible::after { opacity: 1; }
   .value:focus-visible { outline: 3px solid rgba(201,168,76,0.9); outline-offset: 3px; }
   .value:active { transform: translateY(-1px) scale(0.975); transition: transform 0.09s ease; }
   .value .vic { flex-shrink: 0; width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff; background: linear-gradient(145deg, var(--gold), var(--gold-600)); box-shadow: 0 5px 14px rgba(201,168,76,0.42); transition: transform 0.28s cubic-bezier(0.2,0.7,0.3,1); }
-  .value:hover .vic, .value:focus-visible .vic { transform: scale(1.09) rotate(-4deg); }
+  .value:hover .vic, .value:focus-visible .vic { transform: scale(1.08) rotate(-4deg); }
   .value:active .vic { transform: scale(0.95); }
   .value .vic svg { width: 22px; height: 22px; }
-  .value .vtext { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
-  .value .vt { font-weight: 700; color: var(--primary-900); font-size: 0.95rem; line-height: 1.2; }
-  .value .vd { font-size: 0.79rem; color: var(--muted); line-height: 1.3; }
-  .value .varr { position: absolute; top: 50%; right: 0.9rem; transform: translateY(-50%); width: 16px; height: 16px; color: var(--gold-700, #85672A); opacity: 0.5; transition: opacity 0.25s ease, transform 0.25s ease; }
-  .value:hover .varr, .value:focus-visible .varr { opacity: 1; transform: translateY(-50%) translateX(4px); }
+  .value .vtext { min-width: 0; width: 100%; display: flex; flex-direction: column; gap: 3px; }
+  .value .vt { font-weight: 700; color: var(--primary-900); font-size: 0.97rem; line-height: 1.25; }
+  .value .vd { font-size: 0.82rem; color: var(--muted); line-height: 1.4; }
+  .value .varr { position: absolute; top: 1.15rem; right: 0.95rem; width: 16px; height: 16px; color: var(--gold-700, #85672A); opacity: 0.45; transition: opacity 0.25s ease, transform 0.25s ease; }
+  .value:hover .varr, .value:focus-visible .varr { opacity: 1; transform: translateX(4px); }
 
   /* ── Events ── */
   .event { display: flex; gap: 1.1rem; align-items: center; padding: 1.1rem 1.3rem; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); transition: transform .25s ease, box-shadow .25s ease, border-color .2s ease; }
