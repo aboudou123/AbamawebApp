@@ -10,19 +10,19 @@
     strings: {},
     meta: {
       home: {
-        title: "EIPV — Église Internationale Parole de Vie",
+        title: "EIPV · Église Internationale Parole de Vie",
         description: "Bienvenue à l'Église Internationale Parole de Vie. Retrouvez les enseignements, archives, événements et moyens de contact de l'EIPV."
       },
       teachings: {
-        title: "Enseignements — EIPV · Église Internationale Parole de Vie",
+        title: "Enseignements · EIPV · Église Internationale Parole de Vie",
         description: "Vidéos, audios et études bibliques du Pasteur Kossi François Abama à écouter, regarder, filtrer et partager."
       },
       archives: {
-        title: "Archives — EIPV · Église Internationale Parole de Vie",
+        title: "Archives · EIPV · Église Internationale Parole de Vie",
         description: "Retrouvez les messages, enseignements, vidéos, audios et textes de l'EIPV classés par date, type et catégorie."
       },
       contact: {
-        title: "Contact & Dons — EIPV · Église Internationale Parole de Vie",
+        title: "Contact & Dons · EIPV · Église Internationale Parole de Vie",
         description: "Contactez l'EIPV, envoyez un message, demandez la prière ou soutenez le ministère par don."
       }
     },

@@ -51,7 +51,7 @@ if [ -n "$remote_marker" ] && [ "$remote_marker" != "$SITE" ]; then
 fi
 
 if [ -z "$remote_marker" ]; then
-  echo "Aucun marqueur distant — premier déploiement de ${SITE} (le marqueur sera créé)."
+  echo "Aucun marqueur distant · premier déploiement de ${SITE} (le marqueur sera créé)."
 else
   echo "Marqueur distant OK : ${remote_marker}"
 fi
@@ -75,7 +75,7 @@ set net:reconnect-interval-base 5
 #
 # Solution : traiter separement les petits fichiers et les grosses videos.
 
-# Passe 1 : TOUT SAUF /videos/ — comparaison par defaut (taille + date).
+# Passe 1 : TOUT SAUF /videos/ · comparaison par defaut (taille + date).
 #   Les fichiers (HTML/CSS/JS/images) sont petits : les re-uploader a chaque
 #   deploiement est negligeable et GARANTIT que le contenu en ligne est a jour,
 #   meme si une modif ne change pas la taille du fichier.
@@ -88,7 +88,7 @@ mirror --reverse --delete --verbose \
   --exclude README.md \
   . ${REMOTE}
 
-# Passe 2 : UNIQUEMENT /videos/ — comparaison par TAILLE (--ignore-time).
+# Passe 2 : UNIQUEMENT /videos/ · comparaison par TAILLE (--ignore-time).
 #   Les videos font des dizaines/centaines de Mo : on evite de les re-uploader
 #   inutilement. Une video modifiee change de taille, donc elle sera bien poussee.
 mirror --reverse --delete --ignore-time --verbose \

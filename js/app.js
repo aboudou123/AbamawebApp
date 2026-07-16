@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════════
-   EIPV — interactions partagées
+   EIPV · interactions partagées
    nav mobile · modales Don/Contact · partage · lecteur vidéo · reveal
 ═══════════════════════════════════════════════════════════════════ */
 (function () {
@@ -83,7 +83,7 @@
         return '<a class="brow" href="https://wa.me/22893313313" target="_blank" rel="noopener" style="text-decoration:none"><span class="bv" style="text-align:left;letter-spacing:.04em">' + n + '</span><span style="font-size:.72rem;font-weight:800;color:var(--primary);background:var(--primary-50);padding:.25rem .6rem;border-radius:8px">Soutien construction maison de Dieu</span></a>';
       }).join("") +
       '<div class="brow hl"><span class="bl">Code</span><span class="bv" style="font-size:1.3rem;letter-spacing:.3em;color:var(--gold-700)">' + DONATE.moov.code + '</span></div></div>';
-    var fucec = '<div class="acct"><div class="acct-head blue">' + I.card + 'FUCEC — Togo</div>' +
+    var fucec = '<div class="acct"><div class="acct-head blue">' + I.card + 'FUCEC · Togo</div>' +
       '<div class="brow"><span class="bl">Titulaire</span><span class="bv">' + DONATE.fucec.holder + '</span></div>' +
       '<div class="brow hl"><span class="bl">N° Compte</span><span class="bv">' + DONATE.fucec.account + '</span></div></div>';
     return { bank: bank, moov: moov, fucec: fucec };
@@ -133,7 +133,7 @@
               '<div style="flex:1"><p style="font-size:.66rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#15803D">WhatsApp</p><p style="font-weight:800;color:#14532D;margin-top:2px">Écrire sur WhatsApp</p></div>' +
               '<span style="color:#25D366">' + I.arrow + '</span></a>' +
             contactRow(I.mail, "Email", '<a href="mailto:contact@abamafrancois.org" style="font-weight:800;color:var(--primary-900);word-break:break-all">contact@abamafrancois.org</a>') +
-            contactRow(I.clock, "Horaires", '<p style="font-weight:700;color:var(--primary-900)">Lun.–Dim. 08:00–17:00</p>') +
+            contactRow(I.clock, "Horaires", '<p style="font-weight:700;color:var(--primary-900)">Lun.-Dim. 08:00-17:00</p>') +
             '<a href="mailto:contact@abamafrancois.org?subject=Contact EIPV" class="btn btn-primary" style="width:100%;margin-top:1rem">' + I.mail + 'Envoyer un message</a>' +
           '</div>' +
         '</div>' +
@@ -177,7 +177,7 @@
       return videoId ? u + "?video=" + encodeURIComponent(videoId) : u;
     }
   }
-  function shareTitle(card) { return card.getAttribute("data-share-title") || tr("EIPV — Église Internationale Parole de Vie"); }
+  function shareTitle(card) { return card.getAttribute("data-share-title") || tr("EIPV · Église Internationale Parole de Vie"); }
   function hydrateShareIcons(root) {
     (root || document).querySelectorAll(".share-btn[data-sh]").forEach(function (b) {
       if (b.innerHTML.trim()) return;
@@ -238,7 +238,7 @@
   /* ─── Partage de l'application ───────────────────────────────────────────────── */
   function shareApp() {
     var url   = location.origin + '/';
-    var title = 'EIPV — Église Internationale Parole de Vie';
+    var title = 'EIPV · Église Internationale Parole de Vie';
     var text  = 'Découvrez les enseignements du Pasteur Kossi François Abama.';
     if (navigator.share) {
       navigator.share({ title: title, text: text, url: url }).catch(function () {});

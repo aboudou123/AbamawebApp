@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════════
-   EIPV — Église Internationale Parole de Vie
+   EIPV · Église Internationale Parole de Vie
    Système de design partagé · bleu profond / or / crème
 ═══════════════════════════════════════════════════════════════════ */
 
@@ -81,7 +81,7 @@ body {
   line-height: 1.65;
 }
 
-/* Subtle, sober background — dot grid + soft light from top */
+/* Subtle, sober background · dot grid + soft light from top */
 body::before {
   content: "";
   position: fixed;
@@ -955,7 +955,7 @@ p { margin: 0; }
 }
 @media (max-width: 480px) { .ann-item { font-size: .8rem; } }
 
-/* Megaphone icon — pulsing */
+/* Megaphone icon · pulsing */
 .ann-icon {
   display: inline-flex;
   flex-shrink: 0;

@@ -59,7 +59,7 @@
       '<div id="eipv-pop-box">' +
         '<button id="eipv-pop-x" aria-label="Fermer">&#215;</button>' +
         '<img id="eipv-pop-img" src="' + IMAGE_URL + '"' +
-        ' alt="Convention Annuelle des Femmes 2026 — La Puissance de la Langue">' +
+        ' alt="Convention Annuelle des Femmes 2026 · La Puissance de la Langue">' +
         '<div id="eipv-pop-bar"></div>' +
       '</div>' +
     '</div>';
