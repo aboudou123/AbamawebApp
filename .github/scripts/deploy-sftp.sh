@@ -64,7 +64,11 @@ set sftp:auto-confirm yes
 set net:timeout 30
 set net:max-retries 3
 set net:reconnect-interval-base 5
-mirror --reverse --delete --size-only --verbose \
+# NB: option lftp = --ignore-time (compare par TAILLE, ignore l'horodatage).
+#     NE PAS utiliser --size-only : c'est une option de rsync, PAS de lftp mirror.
+#     lftp planterait avec « unrecognized option '--size-only' ».
+#     --ignore-time evite de tout re-uploader a cause des mtimes non fiables du serveur.
+mirror --reverse --delete --ignore-time --verbose \
   --exclude-glob .git/ \
   --exclude-glob .github/ \
   --exclude .gitignore \
