@@ -362,8 +362,10 @@ p { margin: 0; }
 .nav-inner {
   height: 100%;
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  min-width: 0;
 }
-.brand { display: flex; align-items: center; gap: 0.7rem; }
+.nav-inner > * { min-width: 0; }
+.brand { display: flex; align-items: center; gap: 0.7rem; min-width: 0; }
 .brand-mark { width: 44px; height: 44px; flex-shrink: 0; }
 .brand-logo-frame {
   width: 48px;
@@ -391,12 +393,26 @@ p { margin: 0; }
     padding: 3px;
   }
 }
-.brand-text { line-height: 1.05; }
+.brand-text { line-height: 1.05; min-width: 0; }
 .brand-text .b1 { display: block; font-size: 1.05rem; font-weight: 800; color: #fff; letter-spacing: 0.01em; }
 .brand-text .b2 { display: block; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold-200); }
+/* filet de securite : le nom ne pousse jamais le bouton menu hors de l'ecran */
+.nav .brand-text .b1, .nav .brand-text .b2 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* sur mobile le sous-titre est trop long pour la barre : on le retire */
+@media (max-width: 700px) { .nav .brand-text .b2 { display: none; } }
 
 .nav-links { display: none; align-items: center; gap: 0.35rem; }
 @media (min-width: 900px) { .nav-links { display: flex; } }
+
+/* Ecrans intermediaires (tablette paysage / petit portable) : la barre
+   complete ne tient pas, on resserre et on masque le long sous-titre. */
+@media (min-width: 900px) and (max-width: 1120px) {
+  .nav-inner { gap: 0.6rem; }
+  .nav-links { gap: 0.1rem; }
+  .nav-links .nav-link { padding-inline: 0.55rem; }
+  .brand-text .b2 { display: none; }
+  .nav-right { gap: 0.4rem; }
+}
 .nav-link {
   position: relative;
   padding: 0.5rem 0.9rem; border-radius: 9px;
