@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Annonces et événements de l'Église Internationale Parole de Vie · EIPV Temple d'Exploits." />
+<meta name="description" content="Annonces et événements de l'EIPV Temple d'Exploits : Bienvenue en Août 2026 (thème La Famille, 01 Août à 06h00) et Shammah Kabowd Power, 3 jours de jeûnes et prières du 05 au 07 Août 2026." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Annonces · Août 2026 · EIPV Temple d'Exploits" />
+<meta property="og:description" content="Bienvenue en Août 2026 · Thème : La Famille (01 Août, 06h00) et Shammah Kabowd Power · 3 jours de jeûnes et prières (05 au 07 Août 2026)." />
+<meta property="og:image" content="https://abamafrancois.org/images/annonces/aout-2026-la-famille.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
 <title>Annonces · EIPV · Église Internationale Parole de Vie</title>
 <meta name="theme-color" content="#1E3A5F" />
 <meta name="mobile-web-app-capable" content="yes" />
@@ -74,6 +79,190 @@
   gap: 0.4rem;
 }
 .annonce-meta svg { width:15px; height:15px; }
+
+/* ════ AFFICHES / ÉVÉNEMENTS À VENIR ════ */
+.evt-list { display: grid; gap: 4rem; }
+
+.evt-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2.8rem;
+  align-items: center;
+}
+.evt-item.evt-flip .evt-figure { order: 2; }
+@media (max-width: 900px) {
+  .evt-item { grid-template-columns: 1fr; gap: 1.8rem; }
+  .evt-item.evt-flip .evt-figure { order: 0; }
+}
+
+/* Affiche */
+.evt-figure {
+  margin: 0;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #0F2438, #1E3A5F);
+  box-shadow: 0 30px 70px rgba(30,58,95,0.20), 0 6px 18px rgba(30,58,95,0.10), 0 0 0 1px rgba(201,168,76,0.30);
+}
+.evt-zoom {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  line-height: 0;
+}
+.evt-zoom img { width: 100%; height: auto; display: block; }
+.evt-zoom::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(8,20,33,0.55) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.evt-zoom:hover::after, .evt-zoom:focus-visible::after { opacity: 1; }
+.evt-zoom-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 1.1rem;
+  transform: translate(-50%, 10px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.94);
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+.evt-zoom-hint svg { width: 14px; height: 14px; }
+.evt-zoom:hover .evt-zoom-hint,
+.evt-zoom:focus-visible .evt-zoom-hint { opacity: 1; transform: translate(-50%, 0); }
+.evt-zoom:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+/* Corps */
+.evt-badges { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-bottom: 1rem; }
+.evt-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.evt-pill-gold { background: linear-gradient(135deg, var(--gold), var(--gold-300)); color: #2B2109; box-shadow: var(--shadow-gold); }
+.evt-pill-soft { background: var(--primary-50); color: var(--primary); border: 1px solid rgba(30,58,95,0.12); }
+.evt-pill-live { background: #DC2626; color: #fff; }
+.evt-pill-past { background: var(--warm-gray); color: var(--secondary-700); }
+
+.evt-title { font-size: clamp(1.65rem, 3.1vw, 2.4rem); line-height: 1.15; margin: 0; }
+.evt-theme {
+  margin: 1rem 0 0;
+  padding: 0.9rem 1.15rem;
+  border-left: 3px solid var(--gold);
+  background: rgba(201,168,76,0.09);
+  border-radius: 0 12px 12px 0;
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+.evt-theme strong { color: var(--primary-700); }
+.evt-theme .evt-ref { display: block; margin-top: 0.3rem; font-size: 0.86rem; color: var(--muted); font-style: italic; }
+
+.evt-facts { list-style: none; padding: 0; margin: 1.4rem 0 0; display: grid; gap: 0.75rem; }
+.evt-facts li { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.96rem; line-height: 1.5; color: var(--muted); }
+.evt-facts svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--gold-600); margin-top: 2px; }
+.evt-facts strong { color: var(--ink); font-weight: 600; }
+.evt-facts a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.5); }
+.evt-facts a:hover { color: var(--primary); }
+
+.evt-cta { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.7rem; }
+
+/* Bande "en direct" */
+.evt-live {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem 1.4rem;
+  padding: 1.6rem 1.8rem;
+  border-radius: 18px;
+  background: linear-gradient(120deg, #0F2438, #1E3A5F);
+  color: #fff;
+  text-align: center;
+}
+.evt-live p { margin: 0; color: rgba(255,255,255,0.82); font-size: 0.98rem; }
+.evt-live-links { display: flex; flex-wrap: wrap; gap: 0.65rem; justify-content: center; }
+.evt-live-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.evt-live-btn:hover { background: rgba(255,255,255,0.22); transform: translateY(-2px); }
+.evt-live-btn svg { width: 17px; height: 17px; }
+
+/* Visionneuse plein écran */
+#evt-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(8,20,33,0.94);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+#evt-lightbox.evt-on { display: flex; opacity: 1; }
+#evt-lightbox img {
+  max-width: min(100%, 1120px);
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+}
+#evt-lightbox-close {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.55);
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+#evt-lightbox-close:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
+#evt-lightbox-close svg { width: 20px; height: 20px; }
 </style>
 </head>
 <body>
@@ -130,16 +319,190 @@
       <span class="kicker kicker-line">Vie de l'église</span>
       <h1 style="font-size:clamp(2.2rem,4.5vw,3.5rem);margin-top:0.8rem;margin-bottom:0.5rem">Annonces</h1>
       <p style="max-width:38rem;margin:0 auto;color:var(--muted);font-size:1.05rem">Retrouvez ici les dernières nouvelles, invitations et événements de l'EIPV.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;margin-top:1.6rem">
+        <a class="evt-pill evt-pill-soft" href="#aout-2026" style="text-decoration:none">01 Août · La Famille</a>
+        <a class="evt-pill evt-pill-soft" href="#skp-aout-2026" style="text-decoration:none">05 au 07 Août · Shammah Kabowd Power</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ════ VIDÉO D'INVITATION ════ -->
+<!-- ════ À L'AFFICHE · AOÛT 2026 ════ -->
 <section class="section bg-tint">
   <div class="shell">
+    <div class="sec-head reveal" style="text-align:center;max-width:42rem;margin:0 auto 3.2rem">
+      <span class="kicker kicker-line" style="display:inline-block">À l'affiche</span>
+      <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem);margin-top:0.9rem;margin-bottom:0">Août 2026</h2>
+      <p style="margin:0.8rem auto 0;color:var(--muted);font-size:1.02rem;line-height:1.7">Deux rendez-vous de grâce autour d'un même axe : la famille. Cliquez sur une affiche pour l'agrandir.</p>
+    </div>
+
+    <div class="evt-list">
+
+      <!-- ── Annonce 1 · Bienvenue en Août ── -->
+      <article class="evt-item reveal" id="aout-2026">
+        <figure class="evt-figure">
+          <button class="evt-zoom" type="button"
+                  data-poster="/images/annonces/aout-2026-la-famille.jpg"
+                  data-poster-alt="Affiche · Bienvenue en Août 2026 · Thème La Famille · 01 Août 2026 à partir de 06h00">
+            <img src="/images/annonces/aout-2026-la-famille.jpg" width="1279" height="910" loading="lazy" decoding="async"
+                 alt="Affiche · Bienvenue en Août 2026 · Thème La Famille · EIPV Temple d'Exploits" />
+            <span class="evt-zoom-hint">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+              Agrandir l'affiche
+            </span>
+          </button>
+        </figure>
+
+        <div class="evt-body">
+          <div class="evt-badges">
+            <span class="evt-pill evt-pill-gold" data-countdown="2026-08-01T06:00:00+00:00">Prochainement</span>
+            <span class="evt-pill evt-pill-soft">Ouverture du mois</span>
+          </div>
+          <h2 class="evt-title">Bienvenue en Août 2026</h2>
+          <p class="evt-theme">
+            Thème : <strong>La Famille</strong>
+            <span class="evt-ref">Que le Seigneur vous bénisse pour un mois de prospérité, de santé et de joie.</span>
+          </p>
+          <ul class="evt-facts">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span><strong>Samedi 01 Août 2026</strong></span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <span>À partir de <strong>06h00</strong></span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>Orateur : <strong>l'Apôtre ABAMA Kossi François</strong></span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>EIPV Temple d'Exploits <strong>Awatamé, Adidogomé</strong></span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span><a href="tel:+22890059859">+228 90 05 98 59</a> / <a href="tel:+22893313313">93 31 33 13</a></span>
+            </li>
+          </ul>
+          <div class="evt-cta">
+            <button class="btn btn-primary btn-sm evt-zoom-open" type="button" data-poster="/images/annonces/aout-2026-la-famille.jpg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+              Voir l'affiche
+            </button>
+            <button class="btn btn-ghost btn-sm evt-share" type="button"
+                    data-share-title="Bienvenue en Août 2026 · Thème : La Famille"
+                    data-share-text="EIPV Temple d'Exploits · Bienvenue en Août 2026, thème : La Famille. Samedi 01 Août 2026 à partir de 06h00, avec l'Apôtre ABAMA Kossi François.">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Partager
+            </button>
+            <a class="btn btn-ghost btn-sm" href="/images/annonces/aout-2026-la-famille.jpg" download>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Télécharger
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Annonce 2 · Shammah Kabowd Power ── -->
+      <article class="evt-item evt-flip reveal" id="skp-aout-2026">
+        <figure class="evt-figure">
+          <button class="evt-zoom" type="button"
+                  data-poster="/images/annonces/skp-aout-2026-famille-communaute-nation.jpg"
+                  data-poster-alt="Affiche · Shammah Kabowd Power · 3 jours de jeûnes et prières · 05 au 07 Août 2026">
+            <img src="/images/annonces/skp-aout-2026-famille-communaute-nation.jpg" width="911" height="1280" loading="lazy" decoding="async"
+                 alt="Affiche · Rencontre Divine Shammah Kabowd Power · 3 jours de jeûnes et prières · Thème Famille, Communauté, Nation" />
+            <span class="evt-zoom-hint">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+              Agrandir l'affiche
+            </span>
+          </button>
+        </figure>
+
+        <div class="evt-body">
+          <div class="evt-badges">
+            <span class="evt-pill evt-pill-gold" data-countdown="2026-08-05T18:00:00+00:00">Prochainement</span>
+            <span class="evt-pill evt-pill-soft">3 jours de jeûnes &amp; prières</span>
+          </div>
+          <h2 class="evt-title">Rencontre Divine · Shammah Kabowd Power</h2>
+          <p class="evt-theme">
+            Thème : <strong>Famille · Communauté · Nation</strong>
+            <span class="evt-ref">Genèse 10:5</span>
+          </p>
+          <ul class="evt-facts">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>Du <strong>mercredi 05 au vendredi 07 Août 2026</strong></span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <span>À partir de <strong>18h00</strong> chaque soir</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 22v-6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M22 12h-6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg>
+              <span><strong>Dimanche 09 Août : Apothéose</strong></span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>Orateur : <strong>l'Apôtre ABAMA Kossi François</strong></span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Église Internationale Parole de Vie <strong>Adidogomé, Awatamé</strong> · 2<sup>ème</sup> von à droite après la maison du Colonel TEKO en venant du marché d'Awatamé</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span><a href="tel:+22890059859">+228 90 05 98 59</a> / <a href="tel:+22893313313">93 31 33 13</a></span>
+            </li>
+          </ul>
+          <div class="evt-cta">
+            <button class="btn btn-primary btn-sm evt-zoom-open" type="button" data-poster="/images/annonces/skp-aout-2026-famille-communaute-nation.jpg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+              Voir l'affiche
+            </button>
+            <button class="btn btn-ghost btn-sm evt-share" type="button"
+                    data-share-title="Shammah Kabowd Power · 3 jours de jeûnes &amp; prières"
+                    data-share-text="EIPV · Rencontre Divine Shammah Kabowd Power. 3 jours de jeûnes et prières du 05 au 07 Août 2026 à partir de 18h00, thème : Famille, Communauté, Nation (Genèse 10:5). Apothéose le dimanche 09 Août.">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Partager
+            </button>
+            <a class="btn btn-ghost btn-sm" href="/images/annonces/skp-aout-2026-famille-communaute-nation.jpg" download>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Télécharger
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ── Suivre en direct ── -->
+    <div class="evt-live reveal" style="margin-top:3.5rem">
+      <p><strong style="color:#fff">Suivez-nous en direct</strong> si vous ne pouvez pas être présent.</p>
+      <div class="evt-live-links">
+        <a class="evt-live-btn" href="https://www.facebook.com/abama.francois" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.52 1.49-3.91 3.78-3.91 1.1 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.45 2.9h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94"/></svg>
+          Facebook Live · ABAMA Officiel
+        </a>
+        <a class="evt-live-btn" href="https://www.youtube.com/@kossifrancoisabama9052" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.7-1.7C19.3 5.2 12 5.2 12 5.2s-7.3 0-8.9.4A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.7 1.7c1.6.4 8.9.4 8.9.4s7.3 0 8.9-.4a2.5 2.5 0 0 0 1.7-1.7C23 15.2 23 12 23 12zM9.8 15.3V8.7l6 3.3-6 3.3z"/></svg>
+          YouTube · ABAMA Kossi François
+        </a>
+        <a class="evt-live-btn" href="https://wa.me/22893313313" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.43 9.88-9.88 9.88"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ ARCHIVE · CONVENTION DES FEMMES 2026 ════ -->
+<section class="section">
+  <div class="shell">
     <div class="reveal" style="text-align:center;max-width:42rem;margin:0 auto 2.5rem">
-      <span class="kicker kicker-line" style="display:inline-block">Invitation</span>
-      <h2 style="font-size:clamp(1.7rem,3.2vw,2.5rem);margin-top:0.9rem;margin-bottom:0">Convention Annuelle des Femmes 2026</h2>
+      <span class="evt-pill evt-pill-past">Événement passé</span>
+      <h2 style="font-size:clamp(1.6rem,3vw,2.3rem);margin-top:1rem;margin-bottom:0">Convention Annuelle des Femmes 2026</h2>
       <p style="margin:0.8rem auto 0;color:var(--muted);font-size:1.02rem;line-height:1.7">24 au 26 Juin 2026 · 18h00 chaque soir · Dim. 28 Juin : Apothéose Action de Grâce</p>
     </div>
 
@@ -199,8 +562,8 @@
   </div>
 </section>
 
-<!-- ════ AFFICHE ════ -->
-<section class="section">
+<!-- ════ ARCHIVE · AFFICHE ════ -->
+<section class="section-sm">
   <div class="shell">
     <div class="reveal" style="text-align:center;max-width:42rem;margin:0 auto 2.2rem">
       <span class="kicker kicker-line" style="display:inline-block">Affiche officielle</span>
@@ -235,6 +598,127 @@
 </section>
 
 </main>
+
+<!-- ════ VISIONNEUSE D'AFFICHE ════ -->
+<div id="evt-lightbox" role="dialog" aria-modal="true" aria-label="Affiche en grand format">
+  <button id="evt-lightbox-close" type="button" aria-label="Fermer">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <img id="evt-lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" />
+</div>
+
+<script>
+(function () {
+  /* ── Compte à rebours des affiches ─────────────────────────── */
+  var DAY = 86400000;
+  document.querySelectorAll('[data-countdown]').forEach(function (pill) {
+    var start = new Date(pill.getAttribute('data-countdown')).getTime();
+    if (isNaN(start)) return;
+    var days = Math.ceil((start - Date.now()) / DAY);
+    if (days > 1)       pill.textContent = 'Dans ' + days + ' jours';
+    else if (days === 1) pill.textContent = 'Demain';
+    else if (days === 0) pill.textContent = "Aujourd'hui";
+    else {
+      pill.textContent = 'Terminé';
+      pill.classList.remove('evt-pill-gold');
+      pill.classList.add('evt-pill-past');
+    }
+  });
+
+  /* ── Visionneuse plein écran ───────────────────────────────── */
+  var box      = document.getElementById('evt-lightbox');
+  var boxImg   = document.getElementById('evt-lightbox-img');
+  var boxClose = document.getElementById('evt-lightbox-close');
+  var BLANK    = boxImg.getAttribute('src');
+  var opener   = null;
+
+  function open(src, alt) {
+    boxImg.src = src;
+    boxImg.alt = alt || '';
+    box.classList.add('evt-on');
+    document.body.style.overflow = 'hidden';
+    boxClose.focus();
+  }
+  function close() {
+    box.classList.remove('evt-on');
+    document.body.style.overflow = '';
+    boxImg.src = BLANK;
+    boxImg.alt = '';
+    if (opener) { opener.focus(); opener = null; }
+  }
+
+  document.querySelectorAll('.evt-zoom, .evt-zoom-open').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      opener = btn;
+      var img = btn.querySelector('img');
+      open(btn.getAttribute('data-poster'), btn.getAttribute('data-poster-alt') || (img && img.alt));
+    });
+  });
+
+  boxClose.addEventListener('click', close);
+  box.addEventListener('click', function (e) { if (e.target === box) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && box.classList.contains('evt-on')) close();
+  });
+
+  /* ── Partage ───────────────────────────────────────────────── */
+  document.querySelectorAll('.evt-share').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var card  = btn.closest('.evt-item');
+      var url   = location.origin + location.pathname + (card && card.id ? '#' + card.id : '');
+      var title = btn.getAttribute('data-share-title') || document.title;
+      var text  = btn.getAttribute('data-share-text') || '';
+
+      if (navigator.share) {
+        navigator.share({ title: title, text: text, url: url }).catch(function () {});
+        return;
+      }
+      window.open('https://wa.me/?text=' + encodeURIComponent(text + '\n' + url), '_blank', 'noopener');
+    });
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Event",
+      "name": "Bienvenue en Août 2026 · Thème : La Famille",
+      "startDate": "2026-08-01T06:00:00+00:00",
+      "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": "https://abamafrancois.org/images/annonces/aout-2026-la-famille.jpg",
+      "description": "Ouverture du mois d'Août 2026 à l'Église Internationale Parole de Vie, Temple d'Exploits. Thème : La Famille. Orateur : l'Apôtre ABAMA Kossi François.",
+      "location": {
+        "@type": "Place",
+        "name": "EIPV Temple d'Exploits",
+        "address": { "@type": "PostalAddress", "addressLocality": "Adidogomé, Awatamé", "addressCountry": "TG" }
+      },
+      "performer": { "@type": "Person", "name": "Apôtre ABAMA Kossi François" },
+      "organizer": { "@type": "Organization", "name": "Église Internationale Parole de Vie", "url": "https://abamafrancois.org/" }
+    },
+    {
+      "@type": "Event",
+      "name": "Rencontre Divine · Shammah Kabowd Power",
+      "startDate": "2026-08-05T18:00:00+00:00",
+      "endDate": "2026-08-09T12:00:00+00:00",
+      "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": "https://abamafrancois.org/images/annonces/skp-aout-2026-famille-communaute-nation.jpg",
+      "description": "3 jours de jeûnes et prières du 05 au 07 Août 2026 à partir de 18h00. Thème : Famille, Communauté, Nation (Genèse 10:5). Apothéose le dimanche 09 Août.",
+      "location": {
+        "@type": "Place",
+        "name": "Église Internationale Parole de Vie",
+        "address": { "@type": "PostalAddress", "addressLocality": "Adidogomé, Awatamé", "addressCountry": "TG" }
+      },
+      "performer": { "@type": "Person", "name": "Apôtre ABAMA Kossi François" },
+      "organizer": { "@type": "Organization", "name": "Église Internationale Parole de Vie", "url": "https://abamafrancois.org/" }
+    }
+  ]
+}
+</script>
 
 <!-- ════ FOOTER ════ -->
 <footer class="footer">
@@ -282,6 +766,5 @@
 <script src="/en/translations.js"></script>
 <script src="/js/i18n.js"></script>
 <script src="/js/pwa.js"></script>
-<script src="/js/popup.js"></script>
 </body>
 </html>

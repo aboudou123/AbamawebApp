@@ -1,4 +1,4 @@
-const CACHE_VERSION = "eipv-pwa-v5";
+const CACHE_VERSION = "eipv-pwa-v6";
 const APP_SHELL = [
   "/",
   "/index.html",
@@ -9,6 +9,7 @@ const APP_SHELL = [
   "/enseignements.html",
   "/archives.html",
   "/contact.html",
+  "/annonces.html",
   "/css/styles.css",
   "/js/app.js",
   "/js/i18n.js",
