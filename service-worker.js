@@ -1,15 +1,12 @@
-const CACHE_VERSION = "eipv-pwa-v7";
+const CACHE_VERSION = "eipv-pwa-v8";
 const APP_SHELL = [
   "/",
-  "/index.html",
   "/fr/",
-  "/fr/index.html",
   "/en/",
-  "/en/index.html",
-  "/enseignements.html",
-  "/archives.html",
-  "/contact.html",
-  "/annonces.html",
+  "/enseignements",
+  "/archives",
+  "/contact",
+  "/annonces",
   "/css/styles.css",
   "/js/app.js",
   "/js/i18n.js",
@@ -70,7 +67,7 @@ self.addEventListener("fetch", function (event) {
         })
         .catch(function () {
           return caches.match(request)
-            .then(function (cached) { return cached || caches.match("/index.html"); });
+            .then(function (cached) { return cached || caches.match("/"); });
         })
     );
     return;

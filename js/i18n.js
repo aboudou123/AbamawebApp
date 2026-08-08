@@ -180,7 +180,7 @@
     if (id === "home") {
       return { fr: "/fr/", en: "/en/", x: "/" };
     }
-    var file = id === "teachings" ? "/enseignements.html" : id === "archives" ? "/archives.html" : "/contact.html";
+    var file = id === "teachings" ? "/enseignements" : id === "archives" ? "/archives" : "/contact";
     return { fr: file + "?lang=fr", en: file + "?lang=en", x: file };
   }
 

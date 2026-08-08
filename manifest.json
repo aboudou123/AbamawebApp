@@ -44,7 +44,7 @@
       "name": "Enseignements",
       "short_name": "Messages",
       "description": "Voir les enseignements recents",
-      "url": "/enseignements.html",
+      "url": "/enseignements",
       "icons": [
         {
           "src": "/images/pwa/icon-192x192.png",
@@ -57,7 +57,7 @@
       "name": "Archives",
       "short_name": "Archives",
       "description": "Retrouver les messages classes",
-      "url": "/archives.html",
+      "url": "/archives",
       "icons": [
         {
           "src": "/images/pwa/icon-192x192.png",
@@ -70,7 +70,7 @@
       "name": "Contact",
       "short_name": "Contact",
       "description": "Contacter l'EIPV",
-      "url": "/contact.html",
+      "url": "/contact",
       "icons": [
         {
           "src": "/images/pwa/icon-192x192.png",
