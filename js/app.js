@@ -29,6 +29,33 @@
   };
   window.EIPV_ICONS = I;
 
+  /* ─── Mention « Nouveau » ──────────────────────────────────────
+     Automatique : affichée pendant 4 semaines à partir de la date
+     du contenu, puis elle disparaît d'elle-même. Le contenu, lui,
+     reste en place. Aucune intervention manuelle n'est nécessaire.
+  ═══════════════════════════════════════════════════════════════ */
+  var NEW_BADGE_WEEKS = 4;
+  function isNew(iso) {
+    if (!iso) return false;
+    var t = Date.parse(String(iso).length === 10 ? iso + "T00:00:00" : iso);
+    if (isNaN(t)) return false;
+    return (Date.now() - t) < NEW_BADGE_WEEKS * 7 * 864e5; // négatif = à venir → nouveau
+  }
+  function newBadge(iso) {
+    return isNew(iso) ? '<span class="badge-new">' + tr("Nouveau") + "</span>" : "";
+  }
+  /* Cartes écrites en dur : <div class="thumb-badges" data-new-date="2026-08-07">
+     reçoit la pastille tant que la date a moins de 4 semaines. */
+  function hydrateNewBadges(root) {
+    (root || document).querySelectorAll("[data-new-date]").forEach(function (n) {
+      if (n.querySelector(".badge-new")) return;
+      if (!isNew(n.getAttribute("data-new-date"))) return;
+      n.insertAdjacentHTML("beforeend", '<span class="badge-new">' + tr("Nouveau") + "</span>");
+    });
+  }
+  window.EIPV_IS_NEW = isNew;
+  window.EIPV_NEW_BADGE = newBadge;
+
   /* ─── Données de don (reprises de l'app existante) ─────────── */
   var DONATE = {
     bank: [
@@ -357,7 +384,7 @@
   function boot() {
     mountDonateModal(); mountContactModal(); mountVideoModal();
     wireCopy(); wireShare(); wireReveal(); wireNav(); wireFilterToggles();
-    wireAnnounceBar();
+    wireAnnounceBar(); hydrateNewBadges();
 
     document.addEventListener("click", function (e) {
       var t = e.target.closest("[data-open]");

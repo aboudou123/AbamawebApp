@@ -310,27 +310,44 @@
 <script>
 /* ════════════════════════════════════════════════════════════════
    ARCHIVE · toutes les ressources (vidéo / audio / texte).
-   Remplacer par les données réelles (générées depuis YouTube + audio).
+   Les vidéos reprennent titres, dates et durées de la chaîne
+   youtube.com/@kossifrancoisabama9052. La liste est retriée par
+   date à l'affichage (voir render), l'ordre ci-dessous est libre.
+   La mention « Nouveau » est automatique : 4 semaines à partir de
+   la date, puis elle disparaît seule (voir js/app.js).
 ═══════════════════════════════════════════════════════════════════ */
 const ARCHIVE = [
-  { type:"video", title:"Le temps de Dieu", cat:"Le temps de Dieu", date:"2026-06-01", dur:"12:05", yt:"WSn1ekImhQc" },
-  { type:"video", title:"La puissance de la prière intercessive", cat:"Restauration", date:"2026-05-28", dur:"1:00:40", yt:"XumGYkj82Wc" },
-  { type:"video", title:"La puissance de l'exception et de la protection", cat:"Protection", date:"2026-06-14", dur:"", yt:"YjTGSPIfOYg" },
-  { type:"video", title:"La guérison divine : votre héritage en Christ", cat:"Guérison", date:"2026-04-15", dur:"1:10:00", yt:"KMINvZn1efA" },
-  { type:"audio", title:"La main de Dieu", cat:"Foi", date:"2026-07-15", dur:"", audio:"audios/lamaindedieu.mpeg", isNew:true },
-  { type:"audio", title:"Les défis · 07", cat:"Foi", date:"2026-07-15", dur:"", audio:"audios/lesdefit_07.mpeg", isNew:true },
-  { type:"audio", title:"C'est possible", cat:"Foi", date:"2026-07-15", dur:"", audio:"audios/cestpossible.mpeg", isNew:true },
-  { type:"audio", title:"Vaincre par la mentalité · 07", cat:"Foi", date:"2026-07-15", dur:"", audio:"audios/Vaincreparlamentalitee_07.mpeg", isNew:true },
+  { type:"video", title:"Shammah Kabowd Power · Édition Août 2026 · Jour 3", cat:"Gloire", date:"2026-08-07", dur:"2:37:01", yt:"5FrO7rDros8" },
+  { type:"video", title:"Shammah Kabowd Power · Édition Août 2026 · Jour 1", cat:"Gloire", date:"2026-08-05", dur:"2:14:33", yt:"tiOdTb__xIY" },
+  { type:"video", title:"Sagesse pour une famille heureuse · 2", cat:"Famille", date:"2026-08-02", dur:"2:59:12", yt:"9pVhQLuY74o" },
+  { type:"video", title:"Sagesse pour une famille heureuse · 1", cat:"Famille", date:"2026-08-01", dur:"1:32:21", yt:"ZRDDhTXoNhM" },
+  { type:"video", title:"Louange de vengeance pour la domination totale", cat:"Louange", date:"2026-07-26", dur:"3:07:52", yt:"tN8PTXOGSQE" },
+  { type:"video", title:"Prière et louange pour la victoire", cat:"Louange", date:"2026-07-19", dur:"2:44:06", yt:"KgKM8P5mDh8" },
+  { type:"audio", title:"La main de Dieu", cat:"Foi", date:"2026-07-15", dur:"", audio:"audios/lamaindedieu.mpeg" },
+  { type:"audio", title:"Les défis · 07", cat:"Foi", date:"2026-07-15", dur:"", audio:"audios/lesdefit_07.mpeg" },
+  { type:"audio", title:"C'est possible", cat:"Foi", date:"2026-07-15", dur:"", audio:"audios/cestpossible.mpeg" },
+  { type:"audio", title:"Vaincre par la mentalité · 07", cat:"Foi", date:"2026-07-15", dur:"", audio:"audios/Vaincreparlamentalitee_07.mpeg" },
+  { type:"video", title:"Célébrer la fidélité de Dieu", cat:"Louange", date:"2026-07-14", dur:"3:21:57", yt:"Jm3vwJdbfgY" },
+  { type:"video", title:"Invitation", cat:"Annonce", date:"2026-07-13", dur:"3:21", yt:"pSfTeuhDjR8" },
+  { type:"video", title:"La stratégie de la réussite et de la victoire", cat:"Victoire", date:"2026-07-12", dur:"3:19:35", yt:"AI1c-TcunsQ" },
+  { type:"video", title:"Shammah Kabowd Power · Édition Juillet 2026 · Jour 2", cat:"Gloire", date:"2026-07-09", dur:"2:44:42", yt:"hq3Dh-jc6Cs" },
+  { type:"video", title:"La voix de la vérité", cat:"Vérité", date:"2026-07-08", dur:"49:49", yt:"sP5hndbSE5A" },
+  { type:"video", title:"La puissance de l'exception et de la protection", cat:"Protection", date:"2026-06-14", dur:"1:52:31", yt:"YjTGSPIfOYg" },
+  { type:"video", title:"Shammah Kabowd Power · Édition Juin 2026 · Apothéose", cat:"Gloire", date:"2026-06-07", dur:"1:29:29", yt:"uoE0Bx3dgg0" },
+  { type:"video", title:"La voix de la vérité", cat:"Vérité", date:"2026-06-03", dur:"49:51", yt:"VgWUA_cdLLU" },
+  { type:"video", title:"Jésus notre Paraclet", cat:"Esprit Saint", date:"2026-06-02", dur:"1:17", yt:"RtdL-Qqtkkk" },
+  { type:"video", title:"Préservation par l'alliance", cat:"Alliance", date:"2026-06-01", dur:"1:19:14", yt:"WSn1ekImhQc" },
+  { type:"video", title:"La voix de la restauration", cat:"Restauration", date:"2026-05-28", dur:"1:20:32", yt:"XumGYkj82Wc" },
+  { type:"video", title:"La voix de la vérité", cat:"Vérité", date:"2026-05-27", dur:"47:54", yt:"4It2UpteG7Y" },
+  { type:"video", title:"Les clés du succès", cat:"Succès", date:"2026-05-26", dur:"31:30", yt:"hOao_JMQxas" },
+  { type:"video", title:"Le prix de la puissance", cat:"Puissance", date:"2026-05-24", dur:"3:43:23", yt:"hlY2TEQRGKw" },
+  { type:"video", title:"Le but du Saint-Esprit dans la vie du chrétien", cat:"Esprit Saint", date:"2026-05-17", dur:"2:20:10", yt:"KMINvZn1efA" },
+  { type:"audio", title:"Force et responsabilité", cat:"Foi", date:"2026-05-21", dur:"46:50", audio:"audios/Force_responsabilitee.mp3" },
   { type:"audio", title:"Délivrance et liberté en Christ", cat:"Délivrance", date:"2026-03-08", dur:"55:00" },
-  { type:"video", title:"Le Royaume de Dieu en vous", cat:"Le Royaume", date:"2026-03-12", dur:"54:20", yt:"hOao_JMQxas" },
-  { type:"video", title:"Shammah Kabowd Power : Apothéose", cat:"Gloire", date:"2026-06-07", dur:"", yt:"uoE0Bx3dgg0" },
-  { type:"video", title:"L'Esprit Saint : votre consolateur et guide", cat:"Esprit Saint", date:"2025-11-10", dur:"1:05:00", yt:"RtdL-Qqtkkk" },
-  { type:"video", title:"Vaincre la peur par la foi", cat:"Foi", date:"2025-09-22", dur:"51:40", yt:"hVhrNIgIaoo" },
   { type:"text",  title:"Les promesses de Dieu pour votre vie", cat:"Promesses", date:"2025-08-10", dur:"" },
   { type:"audio", title:"La famille selon Dieu · fondements et alliance", cat:"Famille", date:"2025-06-14", dur:"43:20" },
   { type:"audio", title:"La prospérité selon l'Évangile", cat:"Prospérité", date:"2025-02-28", dur:"48:20" },
   { type:"audio", title:"Louange prophétique · entrer dans la présence de Dieu", cat:"Louange", date:"2024-12-25", dur:"57:30" },
-  { type:"video", title:"Vaincre par la Parole", cat:"Le Royaume", date:"2024-09-22", dur:"48:10", yt:"4It2UpteG7Y" },
   { type:"text",  title:"Préparer son cœur pour recevoir la Parole", cat:"Enseignement", date:"2024-03-17", dur:"" }
 ];
 
@@ -345,6 +362,8 @@ function monthOf(iso){ return parseInt(iso.slice(5,7),10)-1; }
 function dayOf(iso){ return parseInt(iso.slice(8,10),10); }
 
 var I = window.EIPV_ICONS || { wa:"WA", copy:"Copier" };
+/* Mention « Nouveau » automatique · 4 semaines à partir de la date (js/app.js) */
+function newBadge(iso){ return window.EIPV_NEW_BADGE ? window.EIPV_NEW_BADGE(iso) : ""; }
 var TYPES = [
   { key:"", label:"Tous" },
   { key:"video", label:"Vidéo" },
@@ -404,7 +423,7 @@ function rowEl(a){
   el.setAttribute("data-share-title", title+" · EIPV");
   el.setAttribute("data-share-url","https://eipv.org/archives");
   if(a.type==="video") el.setAttribute("data-share-video-id", a.yt);
-  var nBadge = a.isNew ? '<span style="display:inline-block;background:#E53E3E;color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.07em;padding:2px 9px;border-radius:99px;text-transform:uppercase;vertical-align:middle;margin-left:7px">Nouveau</span>' : '';
+  var nBadge = newBadge(a.date);
   el.innerHTML =
     '<div class="arch-date"><div class="dd">'+dayOf(a.date)+'</div><div class="mm">'+months[monthOf(a.date)]+' '+yearOf(a.date)+'</div></div>'+
     '<div class="arch-main"><h3>'+title+nBadge+'</h3>'+
@@ -424,9 +443,9 @@ function cardEl(a){
   el.setAttribute("data-share-url","https://eipv.org/archives");
   if(a.type==="video") el.setAttribute("data-share-video-id", a.yt);
   var thumb = a.type==="video"
-    ? '<button class="media-thumb" data-video="https://www.youtube.com/embed/'+a.yt+'" data-video-title="'+title.replace(/"/g,"&quot;")+'" data-video-cat="'+cat+' · YouTube"><div class="ph ph-cross" data-label="[ MINIATURE ]"></div><div class="thumb-badges">'+typeBadge[a.type].replace("Vidéo", trText("Vidéo")).replace("Audio", trText("Audio")).replace("Texte", trText("Texte"))+'</div>'+(a.dur?'<span class="thumb-duration">'+a.dur+'</span>':'')+'<span class="play-btn">'+play+'</span></button>'
+    ? '<button class="media-thumb" data-video="https://www.youtube.com/embed/'+a.yt+'" data-video-title="'+title.replace(/"/g,"&quot;")+'" data-video-cat="'+cat+' · YouTube"><img src="https://img.youtube.com/vi/'+a.yt+'/maxresdefault.jpg" alt="'+title.replace(/"/g,"&quot;")+'" loading="lazy" onerror="this.onerror=null;this.src=&quot;https://img.youtube.com/vi/'+a.yt+'/hqdefault.jpg&quot;" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" /><div class="thumb-badges">'+typeBadge[a.type].replace("Vidéo", trText("Vidéo")).replace("Audio", trText("Audio")).replace("Texte", trText("Texte"))+'</div>'+(a.dur?'<span class="thumb-duration">'+a.dur+'</span>':'')+'<span class="play-btn">'+play+'</span></button>'
     : '<div class="media-thumb"><div class="ph ph-cross" data-label="[ VISUEL ]"></div><div class="thumb-badges">'+typeBadge[a.type].replace("Vidéo", trText("Vidéo")).replace("Audio", trText("Audio")).replace("Texte", trText("Texte"))+'</div>'+(a.dur?'<span class="thumb-duration">'+a.dur+'</span>':'')+'</div>';
-  var nBadgeCard = a.isNew ? '<span style="display:inline-block;background:#E53E3E;color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.07em;padding:2px 9px;border-radius:99px;text-transform:uppercase;vertical-align:middle;margin-left:7px">Nouveau</span>' : '';
+  var nBadgeCard = newBadge(a.date);
   el.innerHTML = thumb +
     '<div class="media-body"><span class="media-cat">'+cat+'</span><h3 class="media-title">'+title+nBadgeCard+'</h3>'+
     '<div class="media-foot"><span class="meta-row">'+dayOf(a.date)+' '+months[monthOf(a.date)]+' '+yearOf(a.date)+'</span>'+(a.type==="audio"?audioShareGroup(a):shareGroup())+'</div></div>';

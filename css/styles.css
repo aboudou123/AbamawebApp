@@ -514,6 +514,16 @@ p { margin: 0; }
 .badge-audio { background: rgba(201,168,76,0.14); border: 1px solid rgba(201,168,76,0.32); color: var(--gold-700); }
 .badge-text  { background: rgba(139,115,85,0.10); border: 1px solid rgba(139,115,85,0.22); color: var(--secondary-600); }
 
+/* Mention « Nouveau » · pilotée par la date, voir EIPV_NEW_BADGE dans js/app.js */
+.badge-new {
+  display: inline-block; vertical-align: middle; margin-left: 7px;
+  background: #E53E3E; color: #fff;
+  padding: 2px 9px; border-radius: 99px;
+  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.07em; line-height: 1.6;
+  text-transform: uppercase; white-space: nowrap;
+}
+.thumb-badges .badge-new { margin-left: 0; }
+
 .meta-row { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem 0.9rem; color: var(--muted); font-size: 0.8rem; font-weight: 500; }
 .meta-row .dot { width: 3px; height: 3px; border-radius: 50%; background: currentColor; opacity: 0.5; }
 .meta-row svg { width: 14px; height: 14px; opacity: 0.7; }
