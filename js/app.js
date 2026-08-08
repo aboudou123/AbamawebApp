@@ -192,6 +192,31 @@
     return node;
   }
 
+  /* ─── Lecture en ligne (dans la carte, sans quitter la page) ─── */
+  function playVideoInline(trigger) {
+    var src = trigger.getAttribute("data-video");
+    if (!src) return false;
+    var slot = trigger.classList.contains("media-thumb")
+      ? trigger
+      : (trigger.closest(".media-card, article, .card") || document).querySelector(".media-thumb");
+    if (!slot) return false;
+    if (slot.querySelector("iframe")) return true; // déjà en lecture
+    var sep = src.indexOf("?") === -1 ? "?" : "&";
+    var frame = document.createElement("iframe");
+    frame.src = src + sep + "autoplay=1&rel=0&playsinline=1&modestbranding=1";
+    frame.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+    frame.setAttribute("allowfullscreen", "");
+    frame.setAttribute("title", trigger.getAttribute("data-video-title") || "Vidéo");
+    frame.style.cssText = "position:absolute;inset:0;width:100%;height:100%;border:0;background:#000";
+    slot.innerHTML = "";
+    slot.style.position = "relative";
+    slot.style.aspectRatio = "16 / 9";
+    slot.style.cursor = "default";
+    slot.classList.add("is-playing");
+    slot.appendChild(frame);
+    return true;
+  }
+
   /* ─── Partage (WhatsApp / Facebook / Copier) ───────────────── */
   function shareUrl(card) {
     var videoId = card.getAttribute("data-share-video-id");
@@ -399,6 +424,7 @@
       var v = e.target.closest("[data-video]");
       if (v) {
         e.preventDefault();
+        if (playVideoInline(v)) return; // lecture dans la carte, page toujours lisible
         var vm = document.getElementById("video-modal");
         vm.querySelector("[data-vframe]").src = v.getAttribute("data-video");
         vm.querySelector("[data-vtitle]").textContent = v.getAttribute("data-video-title") || "";
