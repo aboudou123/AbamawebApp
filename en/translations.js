@@ -112,6 +112,7 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "Shammah Kabowd Power · Édition Août 2026 · Apothéose": "Shammah Kabowd Power · August 2026 Edition · Grand Finale",
       "Shammah Kabowd Power · Édition Août 2026 · Jour 3": "Shammah Kabowd Power · August 2026 Edition · Day 3",
       "Shammah Kabowd Power · Édition Août 2026 · Jour 1": "Shammah Kabowd Power · August 2026 Edition · Day 1",
       "Shammah Kabowd Power · Édition Juillet 2026 · Jour 2": "Shammah Kabowd Power · July 2026 Edition · Day 2",
@@ -135,9 +136,11 @@
       "Puissance": "Power",
       "Victoire": "Victory",
       "Annonce": "Announcement",
+      "Apothéose de l'édition d'août : la sagesse de Dieu pour une famille stable et bénie.": "Grand finale of the August edition: God's wisdom for a stable and blessed family.",
       "Troisième soirée de l'édition d'août : la gloire de Dieu se manifeste avec puissance.": "The third evening of the August edition: God's glory manifests with power.",
       "Ouverture de l'édition d'août 2026 du Shammah Kabowd Power.": "Opening night of the August 2026 Shammah Kabowd Power.",
       "Les principes de la Parole pour bâtir un foyer solide et heureux.": "The principles of the Word for building a strong and happy home.",
+      "9 août 2026": "August 9, 2026",
       "7 août 2026": "August 7, 2026",
       "5 août 2026": "August 5, 2026",
       "2 août 2026": "August 2, 2026",
