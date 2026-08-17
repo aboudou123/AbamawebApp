@@ -20,34 +20,48 @@ Le flux RSS donne les 15 dernières vidéos (`yt:videoId`, `title`, `published`)
 > N'utilise pas WebFetch sur youtube.com : un mur de consentement renvoie une 302
 > vers `consent.youtube.com`. Seul `curl` avec le cookie ci-dessous fonctionne.
 
-Pour chaque vidéo candidate, relever les métadonnées exactes :
+> **IMPORTANT — méthode sans clé API.** Depuis un serveur cloud, YouTube bloque les
+> pages `/watch` et l'API player interne (captcha / LOGIN_REQUIRED sur l'IP sortante).
+> On ne peut donc PAS lire `lengthSeconds` ni `status`. On s'appuie uniquement sur
+> deux portes **non bloquées** : le **flux RSS** (liste + date) et l'**oEmbed** (titre
+> + confirmation que la vidéo est regardable).
+
+Pour chaque vidéo candidate, vérifier qu'elle est **regardable** via **oEmbed** :
 
 ```bash
-curl -s -A "Mozilla/5.0 (Windows NT 10.0; Win64) AppleWebKit/537.36 Chrome/120" \
-     -H "Cookie: SOCS=CAI;CONSENT=YES+1" \
-     "https://www.youtube.com/watch?v=<ID>&hl=fr&gl=FR"
+curl -s "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=<ID>&format=json"
 ```
 
-En extraire par `grep -oE` : `"uploadDate"`, `"lengthSeconds"`, `"isUpcoming"`, `"status"`.
-Convertir `lengthSeconds` en `H:MM:SS`, ou `M:SS` si la vidéo dure moins d'une heure.
+- Réponse **JSON valide (HTTP 200)** → la vidéo existe et est intégrable : publiable.
+  Le titre brut s'y trouve dans le champ `title`.
+- **HTTP 401 / 403 / 404** → non intégrable (privée, supprimée, ou direct programmé
+  pas encore diffusé) : **ne pas publier**, reprendre au prochain cycle.
 
-Le titre propre s'obtient aussi via oEmbed :
-`https://www.youtube.com/oembed?url=https%3A//www.youtube.com/watch%3Fv%3D<ID>&format=json`
+**Durée : toujours laisser vide (`dur:""`).** Elle n'est pas récupérable sans la page
+`/watch` bloquée ; le site l'accepte (le badge de durée ne s'affiche simplement pas).
+**Ne jamais inventer de durée.**
 
 ## 2. Écarter ce qui ne doit pas être publié
 
-**Directs pas encore diffusés.** Si `"isUpcoming":true`, ou `status` =
-`LIVE_STREAM_OFFLINE`, ou `lengthSeconds` = 0 : ne pas publier. C'est une coquille de
-direct programmé, encore vide ; elle serait injouable sur le site. La reprendre plus
-tard, une fois diffusée, avec sa vraie durée.
+**Directs pas encore diffusés.** Sans accès à `status`, deux garde-fous suffisent :
+1. l'**oEmbed doit renvoyer 200** — un direct programmé non commencé renvoie en général
+   une erreur ;
+2. **ne traiter que les vidéos publiées depuis plus de 6 heures** (champ `published` du
+   RSS) : un culte encore en direct est forcément très récent. Une vidéo de moins de
+   6 h est reprise au cycle suivant.
+
+> Pour cette raison, faire tourner la routine **le dimanche en soirée (ou plus tard)**,
+> quand les cultes du jour sont terminés et déjà mis en ligne.
 
 **Doublons de rediffusion.** Le pasteur republie souvent le même culte 2 ou 3 fois
 quand le direct a été coupé puis relancé : même titre, même date, IDs différents.
-N'en garder qu'une seule, celle dont l'`uploadDate` est la plus tardive (c'est en
-général l'enregistrement complet). Vérifier les durées pour confirmer.
+N'en garder qu'une seule, celle dont la date RSS `published` est la **plus tardive**
+(c'est en général l'enregistrement complet).
 
-**Extraits courts.** Une vidéo de 1 à 3 minutes portant le même titre qu'un message
-complet déjà présent est un teaser : ne pas l'ajouter.
+**Extraits courts.** Sans la durée, on ne filtre plus par durée. Écarter un extrait
+seulement si son **titre nettoyé est identique** à un message complet déjà présent, ou
+s'il contient un mot de teaser (`extrait`, `short`, `teaser`, `bande-annonce`). Dans le
+doute, publier : une vidéo en trop est moins grave qu'un message manquant.
 
 **Déjà en ligne.** Ignorer tout ID déjà présent dans le dépôt :
 `grep -r "<ID>" --include=*.html .`
