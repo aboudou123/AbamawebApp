@@ -112,6 +112,18 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "La force de la joie": "The Strength of Joy",
+      "COMECTO Conférence 2026 · Jour 2 · Partie 1": "COMECTO Conference 2026 · Day 2 · Part 1",
+      "COMECTO Conférence 2026 · Jour 2 · Partie 2": "COMECTO Conference 2026 · Day 2 · Part 2",
+      "COMECTO Conférence 2026 · Jour 1": "COMECTO Conference 2026 · Day 1",
+      "COMECTO Conférence 2026 · Jour 1 · Partie 2": "COMECTO Conference 2026 · Day 1 · Part 2",
+      "Conférence": "Conference",
+      "La joie du Seigneur est notre force.": "The joy of the Lord is our strength.",
+      "Conférence COMECTO 2026, deuxième journée (1re partie).": "COMECTO Conference 2026, second day (part 1).",
+      "Conférence COMECTO 2026, deuxième journée (2e partie).": "COMECTO Conference 2026, second day (part 2).",
+      "16 août 2026": "August 16, 2026",
+      "12 août 2026": "August 12, 2026",
+      "11 août 2026": "August 11, 2026",
       "Shammah Kabowd Power · Édition Août 2026 · Apothéose": "Shammah Kabowd Power · August 2026 Edition · Grand Finale",
       "Shammah Kabowd Power · Édition Août 2026 · Jour 3": "Shammah Kabowd Power · August 2026 Edition · Day 3",
       "Shammah Kabowd Power · Édition Août 2026 · Jour 1": "Shammah Kabowd Power · August 2026 Edition · Day 1",
