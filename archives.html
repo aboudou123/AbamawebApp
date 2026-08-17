@@ -309,6 +309,8 @@
    la date, puis elle disparaît seule (voir js/app.js).
 ═══════════════════════════════════════════════════════════════════ */
 const ARCHIVE = [
+  { type:"text", title:"Rencontre Divine · Shammah Kabowd Power", cat:"Annonce", date:"2026-08-05", link:"/images/annonces/skp-aout-2026-famille-communaute-nation.jpg" },
+  { type:"text", title:"Bienvenue en Août 2026 · La Famille", cat:"Annonce", date:"2026-08-01", link:"/images/annonces/aout-2026-la-famille.jpg" },
   { type:"video", title:"La force de la joie", cat:"Louange", date:"2026-08-16", dur:"", yt:"JnZyXWFjUlw" },
   { type:"video", title:"COMECTO Conférence 2026 · Jour 2 · Partie 1", cat:"Conférence", date:"2026-08-12", dur:"", yt:"Utc6Is-nNEo" },
   { type:"video", title:"COMECTO Conférence 2026 · Jour 2 · Partie 2", cat:"Conférence", date:"2026-08-12", dur:"", yt:"dapBihhlrVI" },
@@ -399,6 +401,7 @@ var typeBadge = {
 function actionBtn(a){
   if(a.type==="video") return '<button class="btn btn-primary btn-sm" data-video="https://www.youtube.com/embed/'+a.yt+'" data-video-title="'+trText(a.title).replace(/"/g,"&quot;")+'" data-video-cat="'+trText(a.cat)+' · YouTube">'+trText("Regarder")+'</button>';
   if(a.type==="audio") return '<a class="btn btn-ghost btn-sm" href="/enseignements#sec-audio">'+trText("Écouter")+'</a>';
+  if(a.link) return '<a class="btn btn-ghost btn-sm" href="'+a.link+'">'+trText("Voir l'affiche")+'</a>';
   return '<a class="btn btn-ghost btn-sm" href="/enseignements">'+trText("Lire")+'</a>';
 }
 function shareGroup(){

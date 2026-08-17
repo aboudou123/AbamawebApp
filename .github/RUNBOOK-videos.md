@@ -155,7 +155,30 @@ Contrôles attendus : aucun ID en double, dates au format ISO valide, ordre
 antichronologique respecté dans `CONTENT`, et le nombre de vidéos annoncé par le
 compteur de la page correspond au tableau.
 
-## 9. Livrer
+## 9. Archiver les événements passés (page Annonces)
+
+À chaque cycle, en plus des vidéos, tenir la page `annonces.html` à jour.
+
+- Chaque événement y est une carte `<article class="evt-item">` avec une pastille
+  `data-countdown="<date ISO>"` qui passe **seule** à « Terminé » une fois la date
+  dépassée (script en bas de `annonces.html`).
+- **Quand un événement est passé** (sa date `data-countdown` est antérieure à
+  aujourd'hui) et qu'il n'est **pas déjà** dans `archives.html`, l'ajouter au tableau
+  `ARCHIVE` :
+  ```js
+  { type:"text", title:"<titre de l'événement>", cat:"Annonce", date:"<date ISO>",
+    link:"/images/annonces/<affiche>.jpg" },
+  ```
+  Le `link` pointe vers l'affiche : en archives, il produit un bouton « Voir l'affiche ».
+  L'ordre dans `ARCHIVE` est libre (la page retrie par date). Vérifier l'absence de
+  doublon : `grep -n "<titre>" archives.html`.
+- Traduire le titre dans `en/translations.js` (les clés « Annonce » et « Voir l'affiche »
+  existent déjà) puis **bumper `CACHE_VERSION`** (translations = cache-first).
+- Laisser la carte sur `annonces.html` (déjà marquée « Terminé »). Ne la retirer de la
+  section « À l'affiche » que si le pasteur le demande, ou pour laisser la place à de
+  nouveaux événements à venir.
+
+## 10. Livrer
 
 Créer une branche, commiter, ouvrir une **Pull Request** vers `main`.
 **Ne jamais pousser directement sur `main`** : tout push sur `main` déclenche le

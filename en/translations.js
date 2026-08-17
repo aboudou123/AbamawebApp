@@ -148,6 +148,8 @@
       "Puissance": "Power",
       "Victoire": "Victory",
       "Annonce": "Announcement",
+      "Bienvenue en Août 2026 · La Famille": "Welcome to August 2026 · The Family",
+      "Rencontre Divine · Shammah Kabowd Power": "Divine Encounter · Shammah Kabowd Power",
       "Apothéose de l'édition d'août : la sagesse de Dieu pour une famille stable et bénie.": "Grand finale of the August edition: God's wisdom for a stable and blessed family.",
       "Troisième soirée de l'édition d'août : la gloire de Dieu se manifeste avec puissance.": "The third evening of the August edition: God's glory manifests with power.",
       "Ouverture de l'édition d'août 2026 du Shammah Kabowd Power.": "Opening night of the August 2026 Shammah Kabowd Power.",
