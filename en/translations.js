@@ -112,6 +112,15 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "Convention annuelle des jeunes 2026 · Jour 3": "Annual Youth Convention 2026 · Day 3",
+      "Convention annuelle des jeunes 2026 · Jour 2": "Annual Youth Convention 2026 · Day 2",
+      "Convention annuelle des jeunes 2026 · Jour 1": "Annual Youth Convention 2026 · Day 1",
+      "Convention annuelle des jeunes 2026, troisième journée.": "Annual Youth Convention 2026, third day.",
+      "Convention annuelle des jeunes 2026, deuxième journée.": "Annual Youth Convention 2026, second day.",
+      "Convention annuelle des jeunes 2026, première journée.": "Annual Youth Convention 2026, first day.",
+      "21 août 2026": "August 21, 2026",
+      "20 août 2026": "August 20, 2026",
+      "19 août 2026": "August 19, 2026",
       "La force de la joie": "The Strength of Joy",
       "COMECTO Conférence 2026 · Jour 2 · Partie 1": "COMECTO Conference 2026 · Day 2 · Part 1",
       "COMECTO Conférence 2026 · Jour 2 · Partie 2": "COMECTO Conference 2026 · Day 2 · Part 2",
