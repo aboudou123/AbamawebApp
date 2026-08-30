@@ -1233,3 +1233,218 @@ p { margin: 0; }
   .home-affiche { width: 100%; max-width: 420px; }
   .home-affiche img { width: 100%; height: auto; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THÈME DU MOIS · bandeau navy et or
+   Utilisé sur l'accueil (3 fichiers index) et en tête de /annonces.
+   Ne contient que la référence biblique, jamais le texte du verset : on ne
+   cite pas l'Écriture de mémoire.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.month-theme {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--radius);
+  padding: clamp(2rem, 5vw, 3.4rem) clamp(1.3rem, 4vw, 3rem);
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(152deg, #0A1C2E 0%, #1E3A5F 58%, #14304C 100%);
+  box-shadow: var(--shadow-lift), 0 0 0 1px rgba(201, 168, 76, 0.32);
+}
+.month-theme::before {
+  content: "";
+  position: absolute;
+  inset: -55% 25% auto -25%;
+  height: 360px;
+  background: radial-gradient(closest-side, rgba(201, 168, 76, 0.22), transparent 72%);
+  pointer-events: none;
+  z-index: -1;
+}
+.month-theme > * { position: relative; }
+
+.month-theme-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-200);
+}
+.month-theme-eyebrow::before,
+.month-theme-eyebrow::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: rgba(201, 168, 76, 0.55);
+}
+
+.month-theme h3 {
+  margin: 1rem 0 0;
+  font-size: clamp(1.9rem, 4.6vw, 3.1rem);
+  line-height: 1.08;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.month-theme-ref {
+  display: inline-block;
+  margin-top: 1.3rem;
+  padding: 0.42rem 1.1rem;
+  border: 1px solid rgba(201, 168, 76, 0.5);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--gold-100);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   AFFICHE TYPOGRAPHIQUE · anniversaire d'appel
+   Il n'existe pas d'affiche imprimée pour cet événement : cette carte en tient
+   lieu. Elle n'affiche que des informations données par l'église.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.poster-call {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.1rem, 2.6vw, 1.6rem);
+  min-height: clamp(24rem, 46vw, 32rem);
+  padding: clamp(2.2rem, 5vw, 3rem) clamp(1.4rem, 4vw, 2.4rem);
+  text-align: center;
+  color: #fff;
+  background:
+    radial-gradient(115% 70% at 50% 0%, rgba(201, 168, 76, 0.22), transparent 62%),
+    linear-gradient(168deg, #08182A 0%, #16324F 52%, #0B2035 100%);
+}
+.poster-call::before {
+  content: "";
+  position: absolute;
+  inset: 13px;
+  border: 1px solid rgba(201, 168, 76, 0.36);
+  border-radius: 10px;
+  pointer-events: none;
+}
+.poster-call > * { position: relative; }
+
+.poster-call-house {
+  font-family: var(--sans);
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(244, 232, 196, 0.72);
+}
+
+.poster-call-kicker {
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--gold-200);
+  text-wrap: balance;
+}
+
+.poster-call-years { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+.poster-call-count {
+  font-family: var(--serif);
+  font-size: clamp(4.6rem, 15vw, 7.2rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #fff;
+  text-shadow: 0 10px 40px rgba(201, 168, 76, 0.28);
+}
+.poster-call-unit {
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-200);
+}
+
+.poster-call-span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  font-family: var(--sans);
+  font-size: clamp(0.82rem, 2.2vw, 0.98rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.9);
+}
+.poster-call-span::before,
+.poster-call-span::after {
+  content: "";
+  height: 1px;
+  width: clamp(1rem, 5vw, 2.4rem);
+  background: rgba(201, 168, 76, 0.5);
+}
+.poster-call-diamond { color: var(--gold); font-size: 0.62rem; }
+
+/* Sur les petits téléphones, les filets encadrant les deux dates sont retirés
+   pour garantir que « 21.09.1983 ◆ 21.09.2026 » tienne sur une seule ligne. */
+@media (max-width: 400px) {
+  .poster-call-span { gap: 0.6rem; }
+  .poster-call-span::before,
+  .poster-call-span::after { display: none; }
+}
+
+.poster-call-theme {
+  margin: 0;
+  padding-top: clamp(1rem, 2.6vw, 1.4rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  max-width: 22rem;
+}
+.poster-call-theme b {
+  display: block;
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 3.2vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: #fff;
+  text-wrap: balance;
+}
+.poster-call-theme span {
+  display: block;
+  margin-top: 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-200);
+}
+
+/* Version cliquable sur l'accueil */
+.poster-link {
+  display: block;
+  width: min(26rem, 100%);
+  margin: clamp(2rem, 4vw, 2.8rem) auto 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: var(--shadow-lift), 0 0 0 1px rgba(201, 168, 76, 0.3);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.poster-link:hover,
+.poster-link:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lift), 0 0 0 1px rgba(201, 168, 76, 0.6);
+}
+.poster-link:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .poster-link { transition: none; }
+  .poster-link:hover,
+  .poster-link:focus-visible { transform: none; }
+}
