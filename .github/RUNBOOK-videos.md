@@ -138,6 +138,35 @@ vedettes, et les 4 suivantes dans `VIDEOS`. Les cartes en dur portent la date vi
 
 ## 5. Traductions anglaises · obligatoire
 
+> **Le piège à connaître.** `js/i18n.js` traduit en cherchant le texte français
+> **exact** comme clé dans `en/translations.js`. Clé absente = français laissé en
+> place, **sans aucun message d'erreur**. Il suffit donc de retoucher une phrase
+> française pour que sa traduction cesse de s'appliquer : la page anglaise devient
+> un mélange des deux langues, et personne ne le voit.
+>
+> C'est arrivé pour de vrai : le site a été relu de « Pasteur … Abama » vers
+> « Apôtre … ABAMA » sans toucher aux clés. 80 phrases sont retombées en français.
+>
+> **Avant toute livraison, lancer :**
+>
+> ```bash
+> node .github/scripts/check-translations.mjs           # rapport
+> node .github/scripts/check-translations.mjs --strict  # sort en erreur
+> node .github/scripts/check-translations.mjs --emit    # clés prêtes à coller
+> ```
+>
+> Le script rejoue la logique du moteur : il liste les chaînes sans traduction,
+> les clés devenues orphelines (souvent l'ancienne version d'une phrase
+> retouchée : c'est la trace du décrochage) et les clés en double.
+>
+> **Toujours utiliser `--emit` pour créer une clé.** Certaines phrases
+> contiennent une espace insécable (`Thème&nbsp;:`) invisible à l'œil : retapée
+> à la main, la clé est fausse et ne s'appliquera jamais. `--emit` produit la
+> clé échappée (`"Thème : …"`), il ne reste qu'à écrire l'anglais.
+>
+> La routine du dimanche lance ce contrôle et écrit le résultat dans le résumé
+> du job, avec un avertissement si du français n'est pas traduit.
+
 Chaque titre, catégorie, description et date affichée est une **clé de traduction**.
 Sans entrée dans `en/translations.js`, le texte reste en français sur la version anglaise.
 

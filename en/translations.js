@@ -48,7 +48,6 @@
       "EIPV": "EIPV",
       "Église Internationale Parole de Vie": "International Word of Life Church",
       "EIPV · Église Internationale Parole de Vie": "EIPV · International Word of Life Church",
-      "L'Église Internationale Parole de Vie · portant la Parole de Dieu à toutes les nations, à travers l'enseignement du Pasteur Kossi François Abama.": "International Word of Life Church shares God's Word with the nations through the teaching ministry of Pastor Kossi François Abama.",
       "©": "©",
       "Tous droits réservés.": "All rights reserved.",
       "EIPV · Église Internationale Parole de Vie. Tous droits réservés.": "EIPV · International Word of Life Church. All rights reserved.",
@@ -60,7 +59,6 @@
       "Une Parole qui": "A Word that",
       "transforme": "transforms",
       "des vies": "lives",
-      "Bienvenue à l'EIPV. Découvrez les enseignements du Pasteur Kossi François Abama · des messages clairs, bibliques et pleins d'espérance, à écouter, regarder et partager.": "Welcome to EIPV. Discover Pastor Kossi François Abama's teachings: clear, biblical and hope-filled messages to watch, listen to and share.",
       "Voir les enseignements": "Explore teachings",
       "Vidéos & audios": "Video & audio",
       "Archives par date": "Date-based archives",
@@ -82,7 +80,6 @@
       "Le Pasteur": "The Pastor",
       "Surintendant Général": "Superintendent General",
       "Un serviteur au cœur de la Parole": "A servant shaped by the Word",
-      "Le Pasteur Kossi François Abama conduit l'Église Internationale Parole de Vie avec une passion : voir des vies transformées par l'Évangile de Jésus-Christ. À travers ses enseignements · prière, foi, guérison, famille · il invite chacun à grandir dans la connaissance de Dieu.": "Pastor Kossi François Abama leads International Word of Life Church with one passion: to see lives transformed by the Gospel of Jesus Christ. Through teachings on prayer, faith, healing and family, he helps every person grow in the knowledge of God.",
       "« Car je connais les projets que j'ai formés sur vous, projets de paix et non de malheur. »": "\"For I know the plans I have for you, plans for peace and not for harm.\"",
       "Enseigner": "Teach",
       "La Parole avec clarté": "The Word with clarity",
@@ -175,7 +172,6 @@
       "14 juillet 2026": "July 14, 2026",
       "Chaîne YouTube": "YouTube Channel",
       "Dernières vidéos": "Latest Videos",
-      "Pasteur Kossi François ABAMA · Abonnez-vous pour recevoir nos directs.": "Pastor Kossi François ABAMA · subscribe to receive our live broadcasts.",
       "Voir la chaîne": "Visit the channel",
       "Vie de l'église": "Church life",
 
@@ -211,7 +207,6 @@
       ". Rejoignez-nous pour ces temps de culte, de jeûne et de prière.": ". Join us for these times of worship, fasting and prayer.",
       "Voir l'affiche": "View the poster",
       "Voir toutes les annonces": "See all announcements",
-      "Août": "Aug",
       "Bienvenue en Août · Thème : La Famille": "Welcome to August · Theme: The Family",
       "Samedi · à partir de 06h00": "Saturday · from 6:00 AM",
       "EIPV Temple d'Exploits": "EIPV Temple of Exploits",
@@ -233,13 +228,11 @@
       "Intercession": "Intercession",
       "Étude biblique": "Bible Study",
       "Mercredi · 18:30": "Wednesday · 6:30 PM",
-      "Soutenir le ministère": "Support the ministry",
       "Votre don fait avancer l'Évangile": "Your gift helps advance the Gospel",
       "Chaque contribution soutient l'enseignement, la prière et l'aide aux familles. Merci de marcher avec nous.": "Every contribution supports teaching, prayer and care for families. Thank you for standing with us.",
       "Nous contacter": "Contact us",
 
       "Messages & enseignements": "Messages & Teachings",
-      "Vidéos, audios et études du Pasteur Kossi François ABAMA. Abonnez-vous pour recevoir nos directs, filtrez par thème ou par année, écoutez, regardez et partagez.": "Videos, audios and studies from Pastor Kossi François ABAMA. Subscribe for live broadcasts, filter by topic or year, then listen, watch and share.",
       "Filtrer": "Filter",
       "Rechercher un enseignement…": "Search a teaching...",
       "Rechercher": "Search",
@@ -299,7 +292,6 @@
       "Avril": "April",
       "Mai": "May",
       "Juillet": "July",
-      "Août": "August",
       "Septembre": "September",
       "Octobre": "October",
       "Novembre": "November",
@@ -356,11 +348,131 @@
       "Votre générosité soutient la mission de Dieu.": "Your generosity supports God's mission.",
       "Banque": "Bank",
       "Nous sommes disponibles pour vous accompagner.": "We are here to support you.",
-      "Disponible 24h/24, 7j/7": "Available 24/7",
-      "Envoyer un message": "Send a message",
 
       "Installer l'application": "Install app",
-      "Installer l'application EIPV": "Install the EIPV app"
+      "Installer l'application EIPV": "Install the EIPV app",
+
+      /* ═══════════════════════════════════════════════════════════════════
+         Rattrapage du 30 août 2026 · voir .github/scripts/check-translations.mjs
+         Le site avait été relu de « Pasteur … Abama » vers « Apôtre … ABAMA »
+         sans toucher aux clés : toutes ces phrases retombaient en français sur
+         la version anglaise. Les clés portant   contiennent une espace
+         insécable (Thème&nbsp;:) : ne pas les retaper à la main.
+         ═══════════════════════════════════════════════════════════════════ */
+
+      /* Bande d'annonce · les 4 pages qui la portent */
+      "✨ LUNDI 21 SEPTEMBRE 2026 • CÉLÉBRER L'APPEL DE DIEU": "✨ MONDAY 21 SEPTEMBER 2026 • CELEBRATING GOD'S CALLING",
+      "🕊️ 43 ANS D'APPEL • DU 21/09/1983 AU 21/09/2026": "🕊️ 43 YEARS OF CALLING • FROM 21/09/1983 TO 21/09/2026",
+      "Thème : CÉLÉBRER LA GRÂCE DE DIEU (1 Corinthiens 15:10)": "Theme: CELEBRATING THE GRACE OF GOD (1 Corinthians 15:10)",
+      "🕕 De 18h00 à 20h30": "🕕 From 6:00 PM to 8:30 PM",
+      "📖 SEPTEMBRE 2026 • Thème du mois : LA PUISSANCE DE LA VISION (Proverbes 29:18)": "📖 SEPTEMBER 2026 • Theme of the month: THE POWER OF VISION (Proverbs 29:18)",
+      "Orateur : l'Apôtre ABAMA Kossi François": "Speaker: Apostle ABAMA Kossi François",
+      "📺 Suivez-nous EN DIRECT sur YouTube & Facebook": "📺 Watch us LIVE on YouTube & Facebook",
+      "📍 EIPV Temple d'Exploits • Adidogomé, Awatamé": "📍 EIPV Temple of Exploits • Adidogomé, Awatamé",
+      "🎯 SOYEZ LES BIENVENUS !": "🎯 YOU ARE MOST WELCOME!",
+      "Annonce de l'église": "Church announcement",
+      "Fermer l'annonce": "Close the announcement",
+
+      /* Accueil · textes retouchés « Pasteur » → « Apôtre » */
+      "Bienvenue à l'EIPV. Découvrez les enseignements de l'Apôtre Kossi François ABAMA · des messages clairs, bibliques et pleins d'espérance, à écouter, regarder et partager.": "Welcome to EIPV. Discover the teachings of Apostle Kossi François ABAMA: clear, biblical and hope-filled messages to listen to, watch and share.",
+      "L'Apôtre Kossi François ABAMA conduit l'Église Internationale Parole de Vie avec une passion : voir des vies transformées par l'Évangile de Jésus-Christ. À travers ses enseignements · prière, foi, guérison, famille · il invite chacun à grandir dans la connaissance de Dieu.": "Apostle Kossi François ABAMA leads the International Word of Life Church with one passion: to see lives transformed by the Gospel of Jesus Christ. Through his teaching · prayer, faith, healing, family · he invites everyone to grow in the knowledge of God.",
+      "Apôtre Kossi François ABAMA · Abonnez-vous pour recevoir nos directs.": "Apostle Kossi François ABAMA · subscribe to receive our live broadcasts.",
+      "L'Église Internationale Parole de Vie · portant la Parole de Dieu à toutes les nations, à travers l'enseignement de l'Apôtre Kossi François ABAMA.": "The International Word of Life Church · carrying the Word of God to all nations, through the teaching of Apostle Kossi François ABAMA.",
+      "Vidéos, audios et études de l'Apôtre Kossi François ABAMA. Abonnez-vous pour recevoir nos directs, filtrez par thème ou par année, écoutez, regardez et partagez.": "Videos, audio and studies from Apostle Kossi François ABAMA. Subscribe to receive our live broadcasts, filter by theme or year, listen, watch and share.",
+      "Apôtre Kossi François ABAMA": "Apostle Kossi François ABAMA",
+      "Pasteur Kossi François ABAMA": "Pastor Kossi François ABAMA",
+      "l'Apôtre ABAMA Kossi François": "Apostle ABAMA Kossi François",
+      "ABAMA Kossi François": "ABAMA Kossi François",
+      "Message du Pasteur": "Message from the Pastor",
+      "La Parole qui transforme": "The Word that Transforms",
+      "Un message de l'Apôtre Kossi François ABAMA pour fortifier votre foi.": "A message from Apostle Kossi François ABAMA to strengthen your faith.",
+      "Lire la vidéo : La Parole qui transforme": "Play the video: The Word that Transforms",
+      "Voir tous les enseignements": "See all teachings",
+      "Annonces": "Announcements",
+
+      /* Références bibliques · les noms de livres changent en anglais */
+      "Genèse 10:5": "Genesis 10:5",
+      "Psaume 150:6": "Psalm 150:6",
+      "Jérémie 29:11": "Jeremiah 29:11",
+      "Matthieu 18:20": "Matthew 18:20",
+      "Jacques 5:16": "James 5:16",
+      "1 Corinthiens 1:18": "1 Corinthians 1:18",
+      "2 Corinthiens 9:7": "2 Corinthians 9:7",
+
+      /* Textes alternatifs des images */
+      "Croix": "Cross",
+      "Prière": "Prayer",
+      "Église": "Church",
+      "Mains levées": "Raised hands",
+      "Logo EIPV": "EIPV logo",
+      "Une famille à l'image de Dieu · EIPV": "A Family in the Image of God · EIPV",
+      "Convention annuelle des jeunes 2026 · Apothéose · EIPV": "Annual Youth Convention 2026 · Grand Finale · EIPV",
+      "Convention annuelle des jeunes 2026 · Jour 3 · EIPV": "Annual Youth Convention 2026 · Day 3 · EIPV",
+      "Famille · Apôtre François Abama": "Family · Apostle François Abama",
+      "Jeunesse · Apôtre François Abama": "Youth · Apostle François Abama",
+
+      /* Enseignements · titres audio */
+      "La main de Dieu": "The Hand of God",
+      "Les défis · 07": "The Challenges · 07",
+      "C'est possible": "It Is Possible",
+      "Vaincre par la mentalité · 07": "Overcoming Through Mindset · 07",
+      "Force et responsabilité": "Strength and Responsibility",
+      "Réussir au milieu des défis 01": "Succeeding in the Midst of Challenges 01",
+      "Réussir au milieu des défis 02": "Succeeding in the Midst of Challenges 02",
+
+      /* Page Annonces */
+      "Retrouvez ici les dernières nouvelles, invitations et événements de l'EIPV.": "Find here the latest news, invitations and events of EIPV.",
+      "À l'affiche": "Now showing",
+      "Thème :": "Theme:",
+      "Orateur :": "Speaker:",
+      "Prochainement": "Coming soon",
+      "Terminé": "Ended",
+      "✓ Terminé": "✓ Ended",
+      "Événement passé": "Past event",
+      "Agrandir l'affiche": "Enlarge the poster",
+      "Affiche officielle": "Official poster",
+      "Affiche en grand format": "Poster, full size",
+      "Télécharger": "Download",
+      "Fermer": "Close",
+      "En direct": "Live",
+      "À partir de": "From",
+      "chaque soir": "each evening",
+      "18h00 chaque soir": "6:00 PM each evening",
+      "Awatamé, Adidogomé": "Awatamé, Adidogomé",
+      "Adidogomé, Awatamé": "Adidogomé, Awatamé",
+      "EIPV · Adidogomé · Awatamé": "EIPV · Adidogomé · Awatamé",
+      "ème": "nd",
+      "von à droite après la maison du Colonel TEKO en venant du marché d'Awatamé": "alley on the right, past Colonel TEKO's house, coming from the Awatamé market",
+      "Suivez les cultes où que vous soyez": "Follow the services wherever you are",
+      "Retrouvez nos directs et nos rediffusions sur les chaînes officielles de l'église.": "Find our live broadcasts and replays on the church's official channels.",
+      "L'Église Internationale Parole de Vie · portant la Parole de Dieu à toutes les nations.": "The International Word of Life Church · carrying the Word of God to all nations.",
+
+      /* Annonces d'août 2026, désormais archivées */
+      "01 Août · La Famille": "01 August · The Family",
+      "05 au 07 Août · Shammah Kabowd Power": "05 to 07 August · Shammah Kabowd Power",
+      "Ouverture du mois": "Opening of the month",
+      "Bienvenue en Août 2026": "Welcome to August 2026",
+      "Bienvenue en Août 2026 · Thème : La Famille": "Welcome to August 2026 · Theme: The Family",
+      "Que le Seigneur vous bénisse pour un mois de prospérité, de santé et de joie.": "May the Lord bless you with a month of prosperity, health and joy.",
+      "Samedi 01 Août 2026": "Saturday 01 August 2026",
+      "Apothéose ce dimanche 09 Août": "Grand Finale this Sunday 09 August",
+      "Famille · Communauté · Nation": "Family · Community · Nation",
+      "mercredi 05 au vendredi 07 Août 2026": "Wednesday 05 to Friday 07 August 2026",
+      "Dimanche 09 Août : Apothéose": "Sunday 09 August: Grand Finale",
+      "Affiche · Bienvenue en Août 2026 · Thème La Famille · EIPV Temple d'Exploits": "Poster · Welcome to August 2026 · Theme: The Family · EIPV Temple of Exploits",
+      "Affiche · Rencontre Divine Shammah Kabowd Power · 3 jours de jeûnes et prières · Thème Famille, Communauté, Nation": "Poster · Divine Encounter Shammah Kabowd Power · 3 days of fasting and prayer · Theme: Family, Community, Nation",
+
+      /* Convention annuelle des femmes · juin 2026 */
+      "Convention Annuelle des Femmes 2026": "Annual Women's Convention 2026",
+      "Convention Annuelle des Femmes · Édition 2026": "Annual Women's Convention · 2026 Edition",
+      "Convention Annuelle des Femmes 2026 · La Puissance de la Langue": "Annual Women's Convention 2026 · The Power of the Tongue",
+      "Invitation · Convention Annuelle des Femmes 2026": "Invitation · Annual Women's Convention 2026",
+      "Lire la vidéo d'invitation : Convention Annuelle des Femmes 2026": "Play the invitation video: Annual Women's Convention 2026",
+      "La Puissance de la Langue": "The Power of the Tongue",
+      "Rev. Emma ABAMA & l'Apôtre Kossi François ABAMA": "Rev. Emma ABAMA & Apostle Kossi François ABAMA",
+      "24 au 26 Juin 2026": "24 to 26 June 2026",
+      "24 au 26 Juin 2026 · 18h00 chaque soir · Dim. 28 Juin : Apothéose Action de Grâce": "24 to 26 June 2026 · 6:00 PM each evening · Sun. 28 June: Thanksgiving Grand Finale",
+      ". Un temps de grâce, de communion et de transformation pour toutes les femmes de l'église.": ". A time of grace, fellowship and transformation for all the women of the church."
     },
     meta: {
       home: {

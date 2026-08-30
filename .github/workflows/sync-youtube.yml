@@ -55,6 +55,27 @@ jobs:
           fi
           node .github/scripts/sync-youtube.mjs ${{ inputs.dry_run && '--dry-run' || '' }}
 
+      # Le moteur i18n laisse le français en place quand il ne trouve pas la
+      # clé, sans rien dire. Sans ce contrôle, la version anglaise se dégrade
+      # silencieusement à chaque retouche d'une phrase française.
+      - name: Vérifier les traductions anglaises
+        if: always()
+        run: |
+          node .github/scripts/check-translations.mjs > /tmp/i18n.txt 2>&1 || true
+          head -n 120 /tmp/i18n.txt
+          {
+            echo "## Traductions anglaises"
+            echo '```'
+            head -n 120 /tmp/i18n.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          if grep -q "FRANÇAIS NON TRADUIT" /tmp/i18n.txt; then
+            echo "::warning::Des textes français n'ont pas de traduction anglaise · voir le résumé du job."
+          fi
+          if grep -q "CLÉS EN DOUBLE" /tmp/i18n.txt; then
+            echo "::warning::Des clés sont en double dans en/translations.js · la dernière écrase les autres."
+          fi
+
       - name: Commit
         id: commit
         if: steps.sync.outputs.added != '0' && !inputs.dry_run
