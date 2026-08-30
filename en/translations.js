@@ -112,6 +112,9 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "Convention annuelle des jeunes 2026 · Apothéose": "Annual Youth Convention 2026 · Grand Finale",
+      "Clôture de la Convention annuelle des jeunes 2026.": "Closing of the Annual Youth Convention 2026.",
+      "23 août 2026": "August 23, 2026",
       "La force de la joie": "The Strength of Joy",
       "COMECTO Conférence 2026 · Jour 2 · Partie 1": "COMECTO Conference 2026 · Day 2 · Part 1",
       "COMECTO Conférence 2026 · Jour 2 · Partie 2": "COMECTO Conference 2026 · Day 2 · Part 2",
@@ -155,7 +158,6 @@
       "Ouverture de l'édition d'août 2026 du Shammah Kabowd Power.": "Opening night of the August 2026 Shammah Kabowd Power.",
       "Les principes de la Parole pour bâtir un foyer solide et heureux.": "The principles of the Word for building a strong and happy home.",
       "9 août 2026": "August 9, 2026",
-      "7 août 2026": "August 7, 2026",
       "5 août 2026": "August 5, 2026",
       "2 août 2026": "August 2, 2026",
       "1 août 2026": "August 1, 2026",
