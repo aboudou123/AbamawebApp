@@ -45,6 +45,25 @@
     if (!("serviceWorker" in navigator)) return;
     if (window.location.protocol !== "https:" && !isLocalhost) return;
 
+    /*
+     * Quand une nouvelle version prend la main, la page déjà affichée continue
+     * de tourner avec les anciens scripts et l'ancien dictionnaire : on voyait
+     * du français sur la page anglaise jusqu'à la navigation suivante. On la
+     * recharge donc une fois, immédiatement.
+     *
+     * Deux garde-fous contre la boucle : au tout premier chargement il n'y a
+     * pas encore de contrôleur, la prise de contrôle est normale et ne doit
+     * rien déclencher ; et le rechargement n'a lieu qu'une seule fois par page.
+     */
+    var hadController = !!navigator.serviceWorker.controller;
+    var reloading = false;
+
+    navigator.serviceWorker.addEventListener("controllerchange", function () {
+      if (!hadController || reloading) return;
+      reloading = true;
+      window.location.reload();
+    });
+
     window.addEventListener("load", function () {
       navigator.serviceWorker.register("/service-worker.js", { scope: "/" }).catch(function () {
         /* The app remains usable if the browser blocks registration. */
