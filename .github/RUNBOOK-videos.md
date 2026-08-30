@@ -1,67 +1,99 @@
 # Runbook · publier les nouvelles vidéos YouTube sur le site
 
-Procédure suivie tous les 5 jours par une tâche automatisée (routine Claude Code).
-Elle est aussi valable pour une mise à jour manuelle.
-
 Site 100 % statique : HTML + CSS + JS, aucun build, aucune dépendance.
 Chaîne : **Apôtre Kossi François ABAMA** · `@kossifrancoisabama9052`
 Channel ID : `UCx8fhVM8QYd3gwl9tJMwZnQ`
 
 ---
 
+## 0. C'EST AUTOMATIQUE · lire ceci en premier
+
+Depuis le 30 août 2026, la publication ne dépend plus de personne.
+
+`.github/workflows/sync-youtube.yml` tourne **chaque dimanche à 20 h 00 UTC**
+(plus un rattrapage le mercredi si le dimanche a échoué). Il lance
+`.github/scripts/sync-youtube.mjs`, qui :
+
+1. lit la chaîne via l'API YouTube Data v3 (secret GitHub `YOUTUBE_API_KEY`) ;
+2. écarte les directs en cours, les rediffusions en doublon et les extraits ;
+3. remplit les 3 tableaux des 5 fichiers, les traductions et le cache PWA ;
+4. **commite sur `main` et déploie lui-même vers abamafrancois.org.**
+
+C'est le pasteur qui a choisi la publication directe le 30 août 2026 : le site
+doit être à jour le dimanche soir sans qu'il ait quoi que ce soit à valider.
+
+**Pour le lancer à la main** : onglet *Actions* du dépôt → *Vidéos YouTube →
+site* → *Run workflow*. Cocher *dry_run* pour voir la liste sans rien publier.
+
+**En local** :
+
+```bash
+YOUTUBE_API_KEY=... node .github/scripts/sync-youtube.mjs --dry-run   # simulation
+YOUTUBE_API_KEY=... node .github/scripts/sync-youtube.mjs             # écrit les fichiers
+```
+
+**Si le job échoue** (clé expirée, quota dépassé, API en panne), GitHub prévient
+par e-mail et **rien n'est publié** : le script préfère ne rien écrire plutôt
+que d'abîmer une page. Les sections suivantes décrivent la même procédure à la
+main, pour ce cas-là et pour comprendre ce que fait le script.
+
+**Ce que le script ne sait pas faire** : trouver un beau titre éditorial, et
+traduire un titre inédit en anglais. Il produit un titre correct tiré de la
+vidéo, signale dans le résumé du job les titres restés en français, et n'invente
+jamais une date ou une durée. Corriger après coup dans les 5 fichiers est sans
+risque : le script ne repasse jamais sur une vidéo déjà publiée.
+
+---
+
 ## 1. Lister les vidéos de la chaîne
 
-```bash
-curl -s "https://www.youtube.com/feeds/videos.xml?channel_id=UCx8fhVM8QYd3gwl9tJMwZnQ"
-```
-
-Le flux RSS donne les 15 dernières vidéos (`yt:videoId`, `title`, `published`).
-
-> N'utilise pas WebFetch sur youtube.com : un mur de consentement renvoie une 302
-> vers `consent.youtube.com`. Seul `curl` avec le cookie ci-dessous fonctionne.
-
-> **IMPORTANT — méthode sans clé API.** Depuis un serveur cloud, YouTube bloque les
-> pages `/watch` et l'API player interne (captcha / LOGIN_REQUIRED sur l'IP sortante).
-> On ne peut donc PAS lire `lengthSeconds` ni `status`. On s'appuie uniquement sur
-> deux portes **non bloquées** : le **flux RSS** (liste + date) et l'**oEmbed** (titre
-> + confirmation que la vidéo est regardable).
-
-Pour chaque vidéo candidate, vérifier qu'elle est **regardable** via **oEmbed** :
+**Méthode officielle · API YouTube Data v3** (clé fournie par le pasteur le
+30 août 2026, stockée dans le secret GitHub `YOUTUBE_API_KEY` — **jamais dans le
+dépôt**). La playlist des mises en ligne est `UU` + le channel ID sans son `UC` :
 
 ```bash
-curl -s "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=<ID>&format=json"
+curl -s "https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=25&playlistId=UUx8fhVM8QYd3gwl9tJMwZnQ&key=$YOUTUBE_API_KEY"
+curl -s "https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,status&id=<ID1>,<ID2>&key=$YOUTUBE_API_KEY"
 ```
 
-- Réponse **JSON valide (HTTP 200)** → la vidéo existe et est intégrable : publiable.
-  Le titre brut s'y trouve dans le champ `title`.
-- **HTTP 401 / 403 / 404** → non intégrable (privée, supprimée, ou direct programmé
-  pas encore diffusé) : **ne pas publier**, reprendre au prochain cycle.
+Le second appel donne tout ce qu'il faut, sans aucun contournement :
+`snippet.title`, `snippet.publishedAt`, `snippet.liveBroadcastContent`,
+`contentDetails.duration` (ISO 8601) et `status.uploadStatus`.
 
-**Durée : toujours laisser vide (`dur:""`).** Elle n'est pas récupérable sans la page
-`/watch` bloquée ; le site l'accepte (le badge de durée ne s'affiche simplement pas).
-**Ne jamais inventer de durée.**
+> Sans clé, il reste le flux RSS
+> `https://www.youtube.com/feeds/videos.xml?channel_id=UCx8fhVM8QYd3gwl9tJMwZnQ`
+> (15 dernières vidéos, titre + date) et l'oEmbed
+> `https://www.youtube.com/oembed?url=...&format=json` (titre, HTTP 200 = regardable).
+> Mais **ni durée ni statut de direct** : depuis une IP de serveur, YouTube bloque
+> les pages `/watch`. C'est le mode dégradé, pas le mode normal.
+
+**Ne jamais inventer une métadonnée.** Si l'API ne donne pas une valeur, laisser
+le champ vide (`dur:""`) : le site l'accepte, le badge ne s'affiche simplement pas.
 
 ## 2. Écarter ce qui ne doit pas être publié
 
-**Directs pas encore diffusés.** Sans accès à `status`, deux garde-fous suffisent :
-1. l'**oEmbed doit renvoyer 200** — un direct programmé non commencé renvoie en général
-   une erreur ;
-2. **ne traiter que les vidéos publiées depuis plus de 6 heures** (champ `published` du
-   RSS) : un culte encore en direct est forcément très récent. Une vidéo de moins de
-   6 h est reprise au cycle suivant.
+**Directs pas encore diffusés.** `snippet.liveBroadcastContent` doit valoir `none`
+(sinon c'est `upcoming` ou `live`) et `status.uploadStatus` doit valoir `processed`.
+Garde-fou supplémentaire : **ignorer les vidéos publiées depuis moins de 3 heures**,
+elles sont reprises au passage suivant. C'est la raison pour laquelle la routine
+tourne **le dimanche en soirée**, cultes terminés et mis en ligne.
 
-> Pour cette raison, faire tourner la routine **le dimanche en soirée (ou plus tard)**,
-> quand les cultes du jour sont terminés et déjà mis en ligne.
+**Doublons de rediffusion · le piège n°1 de cette chaîne.** Le pasteur republie
+souvent le même culte 2 ou 3 fois quand le direct a été coupé puis relancé : même
+message, même jour, IDs différents, titres légèrement différents. Comparer
+**la date affichée + les chiffres du titre + le recouvrement des mots** (c'est ce
+que fait `sameBroadcast()` dans le script) : les chiffres distinguent « Jour 1 » de
+« Jour 1 · Partie 2 », le recouvrement rattrape les variantes d'écriture. Sur une
+correspondance, **ne garder que la vidéo mise en ligne en dernier**, en général
+l'enregistrement complet.
 
-**Doublons de rediffusion.** Le pasteur republie souvent le même culte 2 ou 3 fois
-quand le direct a été coupé puis relancé : même titre, même date, IDs différents.
-N'en garder qu'une seule, celle dont la date RSS `published` est la **plus tardive**
-(c'est en général l'enregistrement complet).
+Exemples réels écartés à juste titre : `KT1TkoDC1nA` (rediffusion de `mQdqagLlpLE`),
+`WvFjDEYeoRc` (rediffusion de `5FrO7rDros8`), `04X3bI7F8OM` (rediffusion de
+`hq3Dh-jc6Cs`).
 
-**Extraits courts.** Sans la durée, on ne filtre plus par durée. Écarter un extrait
-seulement si son **titre nettoyé est identique** à un message complet déjà présent, ou
-s'il contient un mot de teaser (`extrait`, `short`, `teaser`, `bande-annonce`). Dans le
-doute, publier : une vidéo en trop est moins grave qu'un message manquant.
+**Extraits courts.** Écarter en dessous de **3 minutes**, ou si le titre contient
+un mot de teaser (`extrait`, `short`, `teaser`, `bande-annonce`). Dans le doute,
+publier : une vidéo en trop est moins grave qu'un message manquant.
 
 **Déjà en ligne.** Ignorer tout ID déjà présent dans le dépôt :
 `grep -r "<ID>" --include=*.html .`
@@ -180,14 +212,20 @@ compteur de la page correspond au tableau.
 
 ## 10. Livrer
 
-Créer une branche, commiter, ouvrir une **Pull Request** vers `main`.
-**Ne jamais pousser directement sur `main`** : tout push sur `main` déclenche le
-déploiement SFTP vers abamafrancois.org (`.github/workflows/deploy.yml`), donc le site
-public changerait sans relecture.
+**Les vidéos vont directement sur `main`** (choix du pasteur, 30 août 2026) : un
+push sur `main` déclenche le déploiement SFTP vers abamafrancois.org. C'est
+voulu — le site doit être à jour le dimanche soir sans validation humaine.
 
-La PR doit lister, pour chaque vidéo ajoutée : titre retenu, ID, date, durée, catégorie ;
-et signaler ce qui a été volontairement écarté (direct pas encore diffusé, doublon,
-extrait) avec la raison.
+Le commit liste, pour chaque vidéo ajoutée : titre retenu, date, durée, catégorie
+et ID, puis ce qui a été écarté et pourquoi.
 
-**S'il n'y a aucune vidéo nouvelle, ne rien commiter et ne pas ouvrir de PR.**
-Dire simplement que le site est à jour.
+Attention : un push fait par le `GITHUB_TOKEN` d'un workflow **ne déclenche pas**
+`deploy.yml` (garde-fou anti-boucle de GitHub). C'est pourquoi
+`sync-youtube.yml` appelle lui-même `.github/scripts/deploy-sftp.sh` après le
+push. Ne pas retirer cette étape en croyant qu'elle fait doublon.
+
+**S'il n'y a aucune vidéo nouvelle, ne rien commiter.** Dire simplement que le
+site est à jour.
+
+> Cette règle ne vaut que pour les vidéos. Pour une refonte, un changement de
+> style ou de structure, on passe toujours par une **Pull Request**.

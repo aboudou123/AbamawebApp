@@ -1,0 +1,96 @@
+name: Vidéos YouTube → site (dimanche soir)
+
+# Publie automatiquement sur abamafrancois.org les nouvelles vidéos de la chaîne
+# @kossifrancoisabama9052. Voir .github/RUNBOOK-videos.md.
+#
+# Secrets nécessaires : YOUTUBE_API_KEY (+ SFTP_HOST / SFTP_USER / SFTP_PASS,
+# déjà utilisés par le déploiement).
+
+on:
+  schedule:
+    # Dimanche 20 h 00 UTC · les cultes du matin sont en ligne et terminés.
+    - cron: "0 20 * * 0"
+    # Filet de sécurité : si le dimanche échoue, on repasse le mercredi.
+    - cron: "0 20 * * 3"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Simulation : lister les vidéos sans rien publier"
+        type: boolean
+        default: false
+
+# Jamais deux publications en même temps (ni avec un déploiement manuel).
+concurrency:
+  group: site-publication
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    name: Chercher et publier les nouvelles vidéos
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Lire la chaîne et mettre le site à jour
+        id: sync
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          if [ -z "$YOUTUBE_API_KEY" ]; then
+            echo "::error::Le secret YOUTUBE_API_KEY est absent du dépôt."
+            exit 1
+          fi
+          node .github/scripts/sync-youtube.mjs ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Commit
+        id: commit
+        if: steps.sync.outputs.added != '0' && !inputs.dry_run
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Rien à commiter."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # Message écrit par le script : aucun titre YouTube ne transite par le
+          # shell (un titre contenant $ ou ` serait interprété).
+          git commit -F "$RUNNER_TEMP/sync-commit-message.txt"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      # Le push fait par GITHUB_TOKEN ne déclenche pas deploy.yml (garde-fou
+      # anti-boucle de GitHub) : on appelle donc le déploiement nous-mêmes.
+      - name: Installer lftp
+        if: steps.commit.outputs.pushed == 'true'
+        run: sudo apt-get install -y lftp
+
+      - name: Déployer vers abamafrancois.org
+        if: steps.commit.outputs.pushed == 'true'
+        env:
+          SFTP_HOST: ${{ secrets.SFTP_HOST }}
+          SFTP_USER: ${{ secrets.SFTP_USER }}
+          SFTP_PASS: ${{ secrets.SFTP_PASS }}
+        run: bash .github/scripts/deploy-sftp.sh
+
+      - name: Bilan
+        if: always()
+        run: |
+          echo "Vidéos ajoutées : ${{ steps.sync.outputs.added }}"
+          echo "Publié en ligne : ${{ steps.commit.outputs.pushed || 'non' }}"
+          echo "Site            : https://abamafrancois.org"
