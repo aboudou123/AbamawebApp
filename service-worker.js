@@ -1,4 +1,4 @@
-const CACHE_VERSION = "eipv-pwa-v12";
+const CACHE_VERSION = "eipv-pwa-v13";
 const APP_SHELL = [
   "/",
   "/fr/",
