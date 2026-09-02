@@ -109,6 +109,14 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "2 septembre 2026": "September 2, 2026",
+      "La vérité de la Parole de Dieu.": "The truth of God's Word.",
+      "Mois de Septembre : la puissance de la vision": "Mois de Septembre : la puissance de la vision",
+      "Parole": "The Word",
+      "1 septembre 2026": "September 1, 2026",
+      "Un message de l'Apôtre Kossi François ABAMA.": "A message from Apostle Kossi François ABAMA.",
+      "La Parole de Dieu pour le foyer.": "God's Word for the home.",
+      "Un temps fort de la convention des jeunes.": "A highlight of the youth convention.",
       "Une famille à l'image de Dieu": "A Family in the Image of God",
       "Convention annuelle des jeunes 2026 · Apothéose": "Annual Youth Convention 2026 · Grand Finale",
       "Convention annuelle des jeunes 2026 · Jour 3": "Annual Youth Convention 2026 · Day 3",
