@@ -50,6 +50,7 @@
 
   function pageId() {
     var p = window.location.pathname.toLowerCase();
+    if (p.indexOf("annonces") !== -1) return "annonces";
     if (p.indexOf("enseignements") !== -1) return "teachings";
     if (p.indexOf("archives") !== -1) return "archives";
     if (p.indexOf("contact") !== -1) return "contact";
@@ -109,6 +110,7 @@
     var attrs = [
       "alt",
       "aria-label",
+      "data-share-text",
       "data-share-title",
       "data-share-url",
       "data-video-cat",
@@ -146,7 +148,7 @@
     while ((node = walker.nextNode())) translateTextNode(node, lang);
 
     if (root.querySelectorAll) {
-      root.querySelectorAll("[alt], [aria-label], [data-share-title], [data-video-cat], [data-video-title], [placeholder], [title]").forEach(function (el) {
+      root.querySelectorAll("[alt], [aria-label], [data-share-text], [data-share-title], [data-video-cat], [data-video-title], [placeholder], [title]").forEach(function (el) {
         translateAttrs(el, lang);
       });
     }
@@ -180,7 +182,10 @@
     if (id === "home") {
       return { fr: "/fr/", en: "/en/", x: "/" };
     }
-    var file = id === "teachings" ? "/enseignements" : id === "archives" ? "/archives" : "/contact";
+    var file = id === "teachings" ? "/enseignements"
+             : id === "archives"  ? "/archives"
+             : id === "annonces"  ? "/annonces"
+             : "/contact";
     return { fr: file + "?lang=fr", en: file + "?lang=en", x: file };
   }
 
@@ -307,6 +312,18 @@
     } catch (e) {}
     apply(currentLang);
     observe();
+
+    /*
+     * Les pages qui construisent leur contenu en JavaScript (enseignements,
+     * archives, compteurs et textes des annonces) se redessinent en écoutant
+     * « eipv:languagechange ». `setLang` l'émet, mais pas le démarrage : une
+     * première visite en anglais — lien ?lang=en, préférence enregistrée ou
+     * chemin /en/ — affichait donc des listes et des dates restées en français
+     * jusqu'au premier clic sur le sélecteur. On émet aussi au démarrage.
+     */
+    window.dispatchEvent(new CustomEvent("eipv:languagechange", {
+      detail: { lang: currentLang, locale: locale(currentLang) }
+    }));
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);

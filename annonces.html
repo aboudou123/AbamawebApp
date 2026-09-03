@@ -1152,21 +1152,33 @@
 
 <script>
 (function () {
+  /* ── Traduction des textes fabriqués par ce script ──────────
+     Le moteur i18n traduit le HTML livré par le serveur, pas les phrases
+     construites ici : « Dans 26 jours » change chaque jour, aucune clé fixe ne
+     peut le couvrir. On passe donc par l'API de langue, et on refait le rendu
+     à chaque changement de langue. `js/i18n.js` étant chargé plus bas dans la
+     page, on attend la fin de l'analyse avant le premier rendu. */
+  function tr(fr) {
+    return (window.EIPV_I18N && window.EIPV_I18N.t) ? window.EIPV_I18N.t(fr) : fr;
+  }
+
   /* ── Compte à rebours des affiches ─────────────────────────── */
   var DAY = 86400000;
-  document.querySelectorAll('[data-countdown]').forEach(function (pill) {
-    var start = new Date(pill.getAttribute('data-countdown')).getTime();
-    if (isNaN(start)) return;
-    var days = Math.ceil((start - Date.now()) / DAY);
-    if (days > 1)       pill.textContent = 'Dans ' + days + ' jours';
-    else if (days === 1) pill.textContent = 'Demain';
-    else if (days === 0) pill.textContent = "Aujourd'hui";
-    else {
-      pill.textContent = 'Terminé';
-      pill.classList.remove('evt-pill-gold');
-      pill.classList.add('evt-pill-past');
-    }
-  });
+  function rendreCompteurs() {
+    document.querySelectorAll('[data-countdown]').forEach(function (pill) {
+      var start = new Date(pill.getAttribute('data-countdown')).getTime();
+      if (isNaN(start)) return;
+      var days = Math.ceil((start - Date.now()) / DAY);
+      if (days > 1)        pill.textContent = tr('Dans {n} jours').replace('{n}', days);
+      else if (days === 1) pill.textContent = tr('Demain');
+      else if (days === 0) pill.textContent = tr("Aujourd'hui");
+      else {
+        pill.textContent = tr('Terminé');
+        pill.classList.remove('evt-pill-gold');
+        pill.classList.add('evt-pill-past');
+      }
+    });
+  }
 
   /* ── Archivage automatique des annonces terminées ───────────
      Une annonce porte data-until="AAAA-MM-JJ", la date après laquelle elle
@@ -1184,26 +1196,38 @@
       var fin = new Date(item.getAttribute('data-until') + 'T23:59:59');
       if (isNaN(fin) || fin >= aujourdhui) return;
 
-      var pastille = item.querySelector('.evt-pill-gold, .evt-pill[data-countdown]');
-      if (pastille) {
-        pastille.textContent = 'Terminé';
-        pastille.classList.remove('evt-pill-gold');
-        pastille.classList.add('evt-pill-past');
-        pastille.removeAttribute('data-countdown');
-      }
+      /* On garde data-countdown : le rendu des compteurs affichera « Terminé »
+         dans la bonne langue, ici comme à chaque changement de langue. */
       archives.insertBefore(item, archives.firstChild);
     });
 
     if (!listeVive.querySelector('.evt-item')) {
       var vide = document.createElement('p');
+      vide.id = 'affiche-vide';
       vide.style.cssText = 'text-align:center;color:var(--muted);font-size:1.02rem;margin:0';
-      vide.textContent = 'Aucune annonce en cours pour le moment. Retrouvez les précédentes dans les archives ci-dessous.';
       listeVive.appendChild(vide);
     }
 
     var compteur = document.querySelector('[data-arch-count]');
     if (compteur) compteur.textContent = String(archives.parentNode.querySelectorAll('.evt-item, .arch-bloc').length);
   }
+
+  function rendreTextesDynamiques() {
+    rendreCompteurs();
+    var vide = document.getElementById('affiche-vide');
+    if (vide) {
+      vide.textContent = tr('Aucune annonce en cours pour le moment. '
+                          + 'Retrouvez les précédentes dans les archives ci-dessous.');
+    }
+  }
+
+  if (window.EIPV_I18N) rendreTextesDynamiques();
+  else document.addEventListener('DOMContentLoaded', function () {
+    /* i18n.js s'initialise lui aussi sur DOMContentLoaded, et son écouteur est
+       enregistré après celui-ci : le délai nul garantit qu'il a déjà tourné. */
+    setTimeout(rendreTextesDynamiques, 0);
+  });
+  window.addEventListener('eipv:languagechange', rendreTextesDynamiques);
 
   /* ── Visionneuse plein écran ───────────────────────────────── */
   var box      = document.getElementById('evt-lightbox');
