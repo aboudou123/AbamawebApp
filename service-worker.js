@@ -84,6 +84,23 @@ self.addEventListener("fetch", function (event) {
 
   if (request.method !== "GET") return;
 
+  /*
+   * Vidéos et sons : jamais mis en cache, jamais interceptés.
+   *
+   * Les fichiers de /videos/ pèsent plusieurs dizaines de Mo. Le navigateur les
+   * demande par plages (requêtes Range, réponses 206) pour permettre le
+   * déplacement dans la vidéo. Les stocker saturerait le quota de l'origine,
+   * ferait évincer la coquille de l'application, et rendre une réponse complète
+   * en cache à une requête de plage casse le déplacement sur plusieurs
+   * navigateurs. On sort donc sans `respondWith` : le navigateur fait sa
+   * requête lui-même, avec son propre cache HTTP.
+   */
+  if (request.destination === "video" || request.destination === "audio" ||
+      request.headers.has("range") ||
+      /\.(mp4|webm|m4v|mov|mp3|m4a|ogg|wav)$/i.test(new URL(request.url).pathname)) {
+    return;
+  }
+
   if (request.mode === "navigate") {
     event.respondWith(
       fetch(request)

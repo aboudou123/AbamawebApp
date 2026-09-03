@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Annonces et événements de l'EIPV Temple d'Exploits : Septembre 2026 sous le thème La Puissance de la Vision (Proverbes 29:18) et la célébration de l'Appel de Dieu, 43 ans, le lundi 21 septembre 2026 de 18h00 à 20h30." />
+<meta name="description" content="Annonces et événements de l'EIPV : Septembre 2026 sous le thème La Puissance de la Vision (Proverbes 29:18), la célébration de l'Appel de Dieu (43 ans) le lundi 21 septembre 2026, et la Rencontre Divine &amp; Impact de l'Onction à Kougnohou du 29 septembre au 4 octobre 2026, thème Le Dieu du Surnaturel." />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Annonces · Septembre 2026 · EIPV Temple d'Exploits" />
-<meta property="og:description" content="Célébrer l'Appel de Dieu · 43 ans (21/09/1983 - 21/09/2026), thème : Célébrer la Grâce de Dieu (1 Corinthiens 15:10). Lundi 21 septembre 2026, de 18h00 à 20h30." />
+<meta property="og:description" content="Rencontre Divine &amp; Impact de l'Onction à Kougnohou, du 29 septembre au 4 octobre 2026 · Thème : Le Dieu du Surnaturel. Et la célébration de l'Appel de Dieu, 43 ans, le lundi 21 septembre 2026." />
 <meta property="og:image" content="https://abamafrancois.org/images/pasteur-kossi-francois-abama.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 <title>Annonces · EIPV · Église Internationale Parole de Vie</title>
@@ -191,6 +191,116 @@
 .evt-facts a:hover { color: var(--primary); }
 
 .evt-cta { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.7rem; }
+
+/* ════ FAÇADE VIDÉO (partagée par toutes les vidéos de la page) ════ */
+.video-facade { position: relative; cursor: pointer; background: #0B1B2B; }
+.video-facade > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.video-facade-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.02) 40%, rgba(0,0,0,0.30) 100%); }
+.video-facade-play {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 84px; height: 84px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.95);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.video-facade-play svg { width: 34px; height: 34px; fill: #fff; margin-left: 4px; }
+.video-facade:hover .video-facade-play,
+.video-facade:focus-visible .video-facade-play { transform: translate(-50%, -50%) scale(1.08); background: rgba(201,168,76,1); }
+.video-facade:focus-visible { outline: 3px solid rgba(201,168,76,0.9); outline-offset: 3px; }
+@media (max-width: 520px) {
+  .video-facade-play { width: 64px; height: 64px; }
+  .video-facade-play svg { width: 26px; height: 26px; }
+}
+
+/* ════ CARTES VIDÉO ════ */
+.vid-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 2.2rem;
+  align-items: stretch;
+}
+/* Les deux vidéos n'ont pas le même format : celle de Kougnohou est presque
+   carrée, celle de la convention est en 16/9. Les cartes s'étirent donc à la
+   même hauteur et c'est la légende qui absorbe l'écart, sinon la grille
+   présente deux bas de cartes décalés de près de 200 px. */
+.vid-card {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(201,168,76,0.22);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.vid-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+.vid-media { position: relative; background: #0B1B2B; line-height: 0; }
+.vid-media .video-facade { width: 100%; }
+.vid-media video { width: 100%; display: block; background: #000; }
+
+/* Pastille de durée, posée sur l'affiche */
+.vid-dur {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.32rem 0.62rem;
+  border-radius: 9px;
+  background: rgba(8,20,33,0.84);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  pointer-events: none;
+}
+.vid-dur svg { width: 12px; height: 12px; }
+
+.vid-cap { flex: 1; display: flex; flex-direction: column; align-items: flex-start; padding: 1.35rem 1.45rem 1.55rem; }
+.vid-eyebrow {
+  display: block;
+  font-size: 0.71rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--gold-600);
+  margin-bottom: 0.5rem;
+}
+.vid-cap h3 {
+  font-size: 1.28rem;
+  line-height: 1.22;
+  margin: 0 0 0.55rem;
+  color: var(--ink);
+}
+.vid-cap p { margin: 0; color: var(--muted); font-size: 0.93rem; line-height: 1.62; }
+.vid-cap p + p { margin-top: 0.6rem; }
+.vid-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 9px;
+  background: var(--primary-50);
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.vid-note svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--gold-600); }
+
+@media (prefers-reduced-motion: reduce) {
+  .vid-card, .video-facade-play { transition: none !important; }
+  .vid-card:hover { transform: none; }
+}
 
 /* ════ BANDE "SUIVEZ-NOUS EN DIRECT" ════ */
 .live-band {
@@ -537,6 +647,85 @@
         </div>
       </article>
 
+      <!-- ── Annonce · Rencontre Divine & Impact de l'Onction · Kougnohou ── -->
+      <article class="evt-item evt-flip reveal" id="rencontre-kougnohou-2026">
+        <figure class="evt-figure">
+          <button class="evt-zoom" type="button"
+                  data-poster="/images/annonces/rencontre-divine-kougnohou-2026.jpg"
+                  data-poster-alt="Affiche · Rencontre Divine et Impact de l'Onction · Kougnohou, du 29 septembre au 4 octobre 2026">
+            <img src="/images/annonces/rencontre-divine-kougnohou-2026.jpg"
+                 alt="Affiche · Rencontre Divine et Impact de l'Onction · Kougnohou, du 29 septembre au 4 octobre 2026"
+                 width="486" height="440" loading="lazy" decoding="async">
+            <span class="evt-zoom-hint">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+              Agrandir l'affiche
+            </span>
+          </button>
+        </figure>
+
+        <div class="evt-body">
+          <div class="evt-badges">
+            <span class="evt-pill evt-pill-gold" data-countdown="2026-09-29T09:00:00+00:00">Prochainement</span>
+            <span class="evt-pill evt-pill-soft">6 jours · Kougnohou</span>
+          </div>
+          <h2 class="evt-title">Rencontre Divine &amp; Impact de l'Onction</h2>
+          <p class="evt-theme">
+            Thème : <strong>Le Dieu du Surnaturel</strong>
+            <span class="evt-ref">« Venez expérimenter la puissance du Dieu du Surnaturel ! »</span>
+          </p>
+          <ul class="evt-facts">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>Du <strong>mardi 29 septembre au dimanche 4 octobre 2026</strong></span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <span><strong>Du mardi au vendredi</strong> · Matin <strong>09h00 – 12h00</strong> : enseignement, délivrance et bénédiction · Soir <strong>dès 18h00</strong> : enseignement, miracle, restauration</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 22v-6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M22 12h-6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg>
+              <span><strong>Samedi 3 octobre</strong> · Croisade de miracle, dès <strong>18h00</strong></span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg>
+              <span><strong>Dimanche 4 octobre</strong> · Grande apothéose, actions de grâces et impartation d'onction, dès <strong>08h00</strong></span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>Orateur : <strong>l'Apôtre ABAMA Kossi François</strong></span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Église Internationale Parole de Vie <strong>Kougnohou</strong> · en face de la station SADKO, voie menant vers la rivière</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span><a href="tel:+22890210258">90 21 02 58</a></span>
+            </li>
+          </ul>
+          <div class="evt-cta">
+            <a class="btn btn-gold btn-sm" href="#video-rencontre">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              Voir la vidéo
+            </a>
+            <button class="btn btn-primary btn-sm evt-zoom-open" type="button" data-poster="/images/annonces/rencontre-divine-kougnohou-2026.jpg" data-poster-alt="Affiche · Rencontre Divine et Impact de l'Onction · Kougnohou">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+              Voir l'affiche
+            </button>
+            <button class="btn btn-ghost btn-sm evt-share" type="button"
+                    data-share-title="Rencontre Divine &amp; Impact de l'Onction · Kougnohou"
+                    data-share-text="Rencontre Divine et Impact de l'Onction à Kougnohou, du 29 septembre au 4 octobre 2026. Thème : Le Dieu du Surnaturel. Orateur : l'Apôtre ABAMA Kossi François. Église Internationale Parole de Vie Kougnohou, en face de la station SADKO. Contact : 90 21 02 58.">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Partager
+            </button>
+            <a class="btn btn-ghost btn-sm" href="/images/annonces/rencontre-divine-kougnohou-2026.jpg" download>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Télécharger
+            </a>
+          </div>
+        </div>
+      </article>
+
       <!-- ── Séparateur · les annonces passées ── -->
       <div class="reveal" style="text-align:center">
         <span class="kicker kicker-line" style="display:inline-block">Le mois dernier · Août 2026</span>
@@ -727,6 +916,78 @@
   </div>
 </section>
 
+<!-- ════ EN VIDÉO ════ -->
+<section class="section" id="videos">
+  <div class="shell">
+    <div class="reveal" style="text-align:center;max-width:44rem;margin:0 auto 2.8rem">
+      <span class="kicker kicker-line" style="display:inline-block">En vidéo</span>
+      <h2 style="font-size:clamp(1.6rem,3vw,2.3rem);margin-top:0.9rem;margin-bottom:0">Les annonces en vidéo</h2>
+      <p style="margin:0.85rem auto 0;color:var(--muted);font-size:1.02rem;line-height:1.7">Écoutez et partagez les annonces autour de vous. Les vidéos ne se téléchargent qu'au moment où vous les lancez.</p>
+    </div>
+
+    <div class="vid-grid">
+
+      <!-- ── Vidéo · Rencontre Divine · Kougnohou ── -->
+      <figure class="vid-card reveal" id="video-rencontre">
+        <div class="vid-media">
+          <div class="video-facade" data-src="/videos/rencontre.mp4" data-ratio="416 / 368"
+               role="button" tabindex="0"
+               aria-label="Lire la vidéo : Rencontre Divine et Impact de l'Onction à Kougnohou, du 29 septembre au 4 octobre 2026"
+               style="aspect-ratio:416/368">
+            <img src="/images/annonces/rencontre-divine-kougnohou-2026.jpg" alt=""
+                 width="486" height="440" loading="lazy" decoding="async">
+            <span class="video-facade-veil" aria-hidden="true"></span>
+            <span class="video-facade-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </div>
+          <span class="vid-dur" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            1:00
+          </span>
+        </div>
+        <figcaption class="vid-cap">
+          <span class="vid-eyebrow">Rencontre Divine · Kougnohou</span>
+          <h3>Impact de l'Onction</h3>
+          <p>Du <strong>29 septembre au 4 octobre 2026</strong>, sous le thème <strong>Le Dieu du Surnaturel</strong>. Six jours d'enseignement, de délivrance et de bénédiction avec l'Apôtre ABAMA Kossi François.</p>
+          <p><a href="#rencontre-kougnohou-2026" style="color:var(--primary);font-weight:600;border-bottom:1px solid rgba(201,168,76,0.5);text-decoration:none">Voir le programme complet</a></p>
+        </figcaption>
+      </figure>
+
+      <!-- ── Vidéo · Convention annuelle · Dieu des signes et des miracles ── -->
+      <figure class="vid-card reveal" id="video-convention">
+        <div class="vid-media">
+          <div class="video-facade" data-src="/videos/convention_annuel.mp4" data-ratio="16 / 9"
+               role="button" tabindex="0"
+               aria-label="Lire la vidéo : convention annuelle, thème Dieu des signes et des miracles"
+               style="aspect-ratio:16/9">
+            <img src="/images/annonces/convention-signes-et-miracles-poster.jpg" alt=""
+                 width="1280" height="720" loading="lazy" decoding="async">
+            <span class="video-facade-veil" aria-hidden="true"></span>
+            <span class="video-facade-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </div>
+          <span class="vid-dur" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            1:07
+          </span>
+        </div>
+        <figcaption class="vid-cap">
+          <span class="vid-eyebrow">Convention annuelle</span>
+          <h3>Dieu des signes et des miracles</h3>
+          <p>L'annonce de la convention annuelle, sous le thème <strong>Dieu des signes et des miracles</strong>. <span style="white-space:nowrap">Exode 7.3</span> · <span style="white-space:nowrap">Exode 4.8</span> · <span style="white-space:nowrap">Actes 4.16</span>.</p>
+          <span class="vid-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+            Les dates et le lieu sont donnés dans l'annonce sonore.
+          </span>
+        </figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
 <!-- ════ ARCHIVE · CONVENTION DES FEMMES 2026 ════ -->
 <section class="section">
   <div class="shell">
@@ -750,35 +1011,6 @@
         </span>
       </div>
     </div>
-    <style>
-      .video-facade:hover .video-facade-play,
-      .video-facade:focus-visible .video-facade-play { transform:translate(-50%,-50%) scale(1.08); background:rgba(201,168,76,1); }
-      .video-facade:focus-visible { outline:3px solid rgba(201,168,76,0.9); outline-offset:3px; }
-    </style>
-    <script>
-      (function () {
-        function mount(facade) {
-          if (facade.dataset.loaded) return;
-          facade.dataset.loaded = '1';
-          var video = document.createElement('video');
-          video.src = facade.dataset.src;
-          video.controls = true;
-          video.autoplay = true;
-          video.playsInline = true;
-          video.setAttribute('playsinline', '');
-          video.style.cssText = 'width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#000';
-          facade.replaceWith(video);
-          var p = video.play();
-          if (p && p.catch) { p.catch(function () {}); }
-        }
-        document.querySelectorAll('.video-facade').forEach(function (facade) {
-          facade.addEventListener('click', function () { mount(facade); });
-          facade.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); mount(facade); }
-          });
-        });
-      })();
-    </script>
 
     <div class="reveal" style="display:flex;align-items:center;gap:0.65rem;margin-top:1.8rem;justify-content:center">
       <div style="width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid var(--gold,#C9A84C);flex-shrink:0">
@@ -891,6 +1123,45 @@
     if (e.key === 'Escape' && box.classList.contains('evt-on')) close();
   });
 
+  /* ── Vidéos : chargement au clic ────────────────────────────
+     La vidéo n'est téléchargée qu'au moment où le visiteur la lance : sur
+     mobile, cela évite plusieurs dizaines de Mo imposés à l'ouverture de la
+     page. L'écoute des événements est déléguée au document, donc toute
+     façade ajoutée plus tard dans la page fonctionne sans reprise du code. */
+  function monterVideo(facade) {
+    if (facade.dataset.loaded) return;
+    facade.dataset.loaded = '1';
+
+    var affiche = facade.querySelector('img');
+    var video = document.createElement('video');
+    video.src = facade.dataset.src;
+    video.controls = true;
+    video.autoplay = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    if (affiche) video.poster = affiche.currentSrc || affiche.src;
+
+    /* On reprend le format de la façade : la vidéo de Kougnohou est presque
+       carrée (416 × 368), un 16/9 imposé la déformerait ou la rognerait. */
+    var format = facade.dataset.ratio || getComputedStyle(facade).aspectRatio || '16 / 9';
+    video.style.cssText =
+      'width:100%;display:block;background:#000;object-fit:contain;aspect-ratio:' + format;
+
+    facade.replaceWith(video);
+    var lecture = video.play();
+    if (lecture && lecture.catch) lecture.catch(function () {});
+  }
+
+  document.addEventListener('click', function (e) {
+    var facade = e.target.closest ? e.target.closest('.video-facade') : null;
+    if (facade) monterVideo(facade);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var facade = e.target.closest ? e.target.closest('.video-facade') : null;
+    if (facade) { e.preventDefault(); monterVideo(facade); }
+  });
+
   /* ── Partage ───────────────────────────────────────────────── */
   document.querySelectorAll('.evt-share').forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -913,6 +1184,23 @@
 {
   "@context": "https://schema.org",
   "@graph": [
+    {
+      "@type": "Event",
+      "name": "Rencontre Divine & Impact de l'Onction · Kougnohou",
+      "startDate": "2026-09-29T09:00:00+00:00",
+      "endDate": "2026-10-04T12:00:00+00:00",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": "https://abamafrancois.org/images/annonces/rencontre-divine-kougnohou-2026.jpg",
+      "description": "Rencontre Divine et Impact de l'Onction a Kougnohou, du mardi 29 septembre au dimanche 4 octobre 2026. Theme : Le Dieu du Surnaturel. Du mardi au vendredi de 09h00 a 12h00 et des 18h00, croisade de miracle le samedi 3 octobre des 18h00, grande apotheose le dimanche 4 octobre des 08h00. Orateur : l'Apotre ABAMA Kossi Francois.",
+      "location": {
+        "@type": "Place",
+        "name": "Église Internationale Parole de Vie Kougnohou",
+        "address": { "@type": "PostalAddress", "streetAddress": "En face de la station SADKO, voie menant vers la rivière", "addressLocality": "Kougnohou", "addressCountry": "TG" }
+      },
+      "performer": { "@type": "Person", "name": "Apôtre ABAMA Kossi François" },
+      "organizer": { "@type": "Organization", "name": "Église Internationale Parole de Vie", "url": "https://abamafrancois.org/" }
+    },
     {
       "@type": "Event",
       "name": "Bienvenue en Août 2026 · Thème : La Famille",
