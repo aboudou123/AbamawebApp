@@ -1,4 +1,4 @@
-const CACHE_VERSION = "eipv-pwa-v17";
+const CACHE_VERSION = "eipv-pwa-v18";
 
 /*
  * Fichiers qui portent du texte ou de la logique : feuille de style, scripts et
