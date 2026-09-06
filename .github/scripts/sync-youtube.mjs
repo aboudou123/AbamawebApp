@@ -168,6 +168,15 @@ const ACCENTS = [
   [/\bprosperite\b/gi, "prospérité"], [/\bsuccess?e?s\b/gi, "succès"],
 ];
 
+/*
+ * Le pasteur commence parfois une formule qu'il ne termine pas avant le
+ * séparateur : « VOIX DE LA RESTAURATION AVEC II Apôtre… ». Une fois la
+ * signature retirée, ce mot reste seul en fin de titre et n'a plus de sens.
+ * Vu en vrai le 02/09/2026 : le site affichait « Voix de la restauration avec ».
+ */
+const DANGLING =
+  /\s+(?:avec|de|du|des|et|ou|pour|dans|sur|par|chez|sans|sous|vers|entre|a|à|au|aux|le|la|les|un|une|l'|d')$/i;
+
 function cleanTitle(raw) {
   let t = raw.replace(/\s+/g, " ").trim();
 
@@ -185,6 +194,7 @@ function cleanTitle(raw) {
         .replace(/^[\s.,;:·|-]+/, "")
         .replace(/[\s.,;:·|-]+$/, "")
         .replace(/\s+(?:II|ll)$/, "") // séparateur resté collé en fin de segment
+        .replace(DANGLING, "") // mot en suspens : « … RESTAURATION AVEC II … »
         .trim()
     )
     .filter((p) => p && !/^(?:ii|ll|\d)$/i.test(p))
@@ -569,6 +579,20 @@ async function main() {
     pairs.push([dateFr(v.iso), dateEn(v.iso)]);
     const blurb = BLURBS[v.cat];
     if (blurb) pairs.push(blurb);
+
+    /*
+     * Les cartes portent aussi des attributs composés, traduits par le moteur
+     * comme n'importe quel texte : data-share-title et data-video-cat. Oubliés,
+     * ils laissaient trois bouts de français sur la version anglaise a chaque
+     * nouvelle vidéo. Ils sont construits ici exactement comme dans
+     * featuredCard(), sans quoi la clé ne correspondrait a rien.
+     */
+    const catEn = CATEGORY_EN[v.cat] || v.cat;
+    pairs.push([`${v.title} · EIPV`, `${en} · EIPV`]);
+    pairs.push([
+      `${v.cat} · Apôtre François Abama`,
+      `${catEn} · Apostle François Abama`,
+    ]);
   }
   const keys = addTranslations(pairs);
   const cache = bumpCacheVersion();

@@ -109,9 +109,11 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
-      "Poursuite de la vision": "Poursuite de la vision",
+      "Poursuite de la vision": "Pursuing the Vision",
+      "Poursuite de la vision · EIPV": "Pursuing the Vision · EIPV",
+      "La voix de la restauration · EIPV": "The Voice of Restoration · EIPV",
+      "Restauration · Apôtre François Abama": "Restoration · Apostle François Abama",
       "6 septembre 2026": "September 6, 2026",
-      "Voix de la restauration avec": "Voix de la restauration avec",
       "Le temps de la restauration.": "The season of restoration.",
       "2 septembre 2026": "September 2, 2026",
       "La vérité de la Parole de Dieu.": "The truth of God's Word.",
