@@ -109,6 +109,10 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "Poursuite de la vision": "The Pursuit of Vision",
+      "6 septembre 2026": "September 6, 2026",
+      "Voix de la restauration avec": "The Voice of Restoration With",
+      "Le temps de la restauration.": "The season of restoration.",
       "2 septembre 2026": "September 2, 2026",
       "La vérité de la Parole de Dieu.": "The truth of God's Word.",
       "Mois de Septembre : la puissance de la vision": "September: The Power of Vision",
@@ -484,8 +488,11 @@
       // Annonces : Rencontre Divine, vidéos et archives
       "La voix de la vérité · EIPV": "The Voice of Truth · EIPV",
       "Mois de Septembre : la puissance de la vision · EIPV": "September: The Power of Vision · EIPV",
+      "Poursuite de la vision · EIPV": "The Pursuit of Vision · EIPV",
+      "Voix de la restauration avec · EIPV": "The Voice of Restoration With · EIPV",
       "Vérité · Apôtre François Abama": "Truth · Apostle François Abama",
       "Parole · Apôtre François Abama": "Word · Apostle François Abama",
+      "Restauration · Apôtre François Abama": "Restoration · Apostle François Abama",
       "Du": "From",
       "Demain": "Tomorrow",
       "Aujourd'hui": "Today",
