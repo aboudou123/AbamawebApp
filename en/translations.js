@@ -109,6 +109,9 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "La voix de la restauration · Abama kossi françois": "La voix de la restauration · Abama kossi françois",
+      "9 septembre 2026": "September 9, 2026",
+      "La voix de la restauration · Abama kossi françois · EIPV": "La voix de la restauration · Abama kossi françois · EIPV",
       "Poursuite de la vision": "Pursuing the Vision",
       "Poursuite de la vision · EIPV": "Pursuing the Vision · EIPV",
       "La voix de la restauration · EIPV": "The Voice of Restoration · EIPV",
