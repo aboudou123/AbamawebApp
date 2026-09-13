@@ -10,9 +10,16 @@ Channel ID : `UCx8fhVM8QYd3gwl9tJMwZnQ`
 
 Depuis le 30 août 2026, la publication ne dépend plus de personne.
 
-`.github/workflows/sync-youtube.yml` tourne **chaque dimanche à 20 h 00 UTC**
-(plus un rattrapage le mercredi si le dimanche a échoué). Il lance
-`.github/scripts/sync-youtube.mjs`, qui :
+`.github/workflows/sync-youtube.yml` tourne **chaque dimanche à 13 h 00 UTC**,
+repasse le **dimanche à 20 h 00** pour les mises en ligne tardives, et garde un
+rattrapage le **mercredi à 20 h 00**.
+
+> L'heure du dimanche a été avancée de 20 h à 13 h le 13 septembre 2026 : le
+> culte du matin est mis en ligne vers 9 h 30 UTC, la règle des 3 h est donc
+> largement tenue dès 13 h. Le pasteur voyait ses messages arriver le soir et
+> demandait chaque dimanche après-midi pourquoi rien n'était publié.
+
+Il lance `.github/scripts/sync-youtube.mjs`, qui :
 
 1. lit la chaîne via l'API YouTube Data v3 (secret GitHub `YOUTUBE_API_KEY`) ;
 2. écarte les directs en cours, les rediffusions en doublon et les extraits ;
@@ -20,7 +27,7 @@ Depuis le 30 août 2026, la publication ne dépend plus de personne.
 4. **commite sur `main` et déploie lui-même vers abamafrancois.org.**
 
 C'est le pasteur qui a choisi la publication directe le 30 août 2026 : le site
-doit être à jour le dimanche soir sans qu'il ait quoi que ce soit à valider.
+doit être à jour dans la journée sans qu'il ait quoi que ce soit à valider.
 
 **Pour le lancer à la main** : onglet *Actions* du dépôt → *Vidéos YouTube →
 site* → *Run workflow*. Cocher *dry_run* pour voir la liste sans rien publier.
@@ -75,8 +82,9 @@ le champ vide (`dur:""`) : le site l'accepte, le badge ne s'affiche simplement p
 **Directs pas encore diffusés.** `snippet.liveBroadcastContent` doit valoir `none`
 (sinon c'est `upcoming` ou `live`) et `status.uploadStatus` doit valoir `processed`.
 Garde-fou supplémentaire : **ignorer les vidéos publiées depuis moins de 3 heures**,
-elles sont reprises au passage suivant. C'est la raison pour laquelle la routine
-tourne **le dimanche en soirée**, cultes terminés et mis en ligne.
+elles sont reprises au passage suivant. C'est la raison pour laquelle le premier
+passage du dimanche est à **13 h 00 UTC** : le culte du matin est en ligne vers
+9 h 30, les 3 h sont largement écoulées.
 
 **Doublons de rediffusion · le piège n°1 de cette chaîne.** Le pasteur republie
 souvent le même culte 2 ou 3 fois quand le direct a été coupé puis relancé : même

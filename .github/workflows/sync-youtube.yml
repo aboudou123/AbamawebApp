@@ -1,4 +1,4 @@
-name: Vidéos YouTube → site (dimanche soir)
+name: Vidéos YouTube → site (dimanche)
 
 # Publie automatiquement sur abamafrancois.org les nouvelles vidéos de la chaîne
 # @kossifrancoisabama9052. Voir .github/RUNBOOK-videos.md.
@@ -8,9 +8,14 @@ name: Vidéos YouTube → site (dimanche soir)
 
 on:
   schedule:
-    # Dimanche 20 h 00 UTC · les cultes du matin sont en ligne et terminés.
+    # Dimanche 13 h 00 UTC · le culte du matin est mis en ligne vers 9 h 30,
+    # la règle des 3 h est donc largement tenue. Le pasteur voit ses messages
+    # sur le site en début d'après-midi, et non le soir.
+    - cron: "0 13 * * 0"
+    # Dimanche 20 h 00 UTC · deuxième passage, pour une mise en ligne tardive
+    # ou un culte du soir. Sans effet s'il n'y a rien de nouveau.
     - cron: "0 20 * * 0"
-    # Filet de sécurité : si le dimanche échoue, on repasse le mercredi.
+    # Filet de sécurité en semaine : mercredi soir.
     - cron: "0 20 * * 3"
   workflow_dispatch:
     inputs:

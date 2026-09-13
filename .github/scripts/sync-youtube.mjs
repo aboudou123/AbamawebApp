@@ -158,6 +158,17 @@ const PROPER = [
 const SIGNATURE =
   /(?:Avec\s+)?(?:L['’])?\s*Ap[oô]tre\b[\s.,]*(?:ABAMA)?[\s.,]*(?:Kossi)?[\s.,]*(?:Fran[cç]ois)?/gi;
 
+/*
+ * Le nom du pasteur apparaît parfois SEUL, sans « Apôtre » devant :
+ * « la Voix de la Restauration II ABAMA Kossi François II, Apôtre ABAMA… ».
+ * SIGNATURE ne retire que la mention précédée d'« Apôtre » ; ce segment-là
+ * survivait et devenait un morceau de titre.
+ * Vu en vrai le 09/09/2026 : le site affichait
+ * « La voix de la restauration · Abama kossi françois ».
+ */
+const NAME_ONLY =
+  /(?:ABAMA|Kossi|Fran.ois)(?:[\s.,]*(?:ABAMA|Kossi|Fran.ois))+/gi;
+
 /** Mots que la chaîne écrit sans accent : on rétablit l'orthographe du site. */
 const ACCENTS = [
   [/\bconference\b/gi, "Conférence"], [/\bapotheose\b/gi, "Apothéose"],
@@ -181,6 +192,7 @@ function cleanTitle(raw) {
   let t = raw.replace(/\s+/g, " ").trim();
 
   t = t.replace(SIGNATURE, " ");
+  t = t.replace(NAME_ONLY, " "); // le nom sans « Apôtre » devant
   t = t.replace(/\d{1,2}[\/.-]\d{1,2}[\/.-]\d{2,4}/g, " "); // dates, même collées
   t = t.replace(/(\d)(?=(?:II|ll)(?:[\s,.;:]|$))/g, "$1 "); // « Jour 1II » → « Jour 1 II »
   t = t.replace(/(^|\s)(?:II|ll)(?=[\s,.;:!?]|$)/g, "$1·"); // séparateur maison de la chaîne
