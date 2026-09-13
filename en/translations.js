@@ -109,6 +109,9 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "Pillers pour l'accomplissement de vision": "Pillers pour l'accomplissement de vision",
+      "13 septembre 2026": "September 13, 2026",
+      "Pillers pour l'accomplissement de vision · EIPV": "Pillers pour l'accomplissement de vision · EIPV",
       "9 septembre 2026": "September 9, 2026",
       "Poursuite de la vision": "Pursuing the Vision",
       "Poursuite de la vision · EIPV": "Pursuing the Vision · EIPV",
