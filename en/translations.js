@@ -109,9 +109,9 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
-      "Piliers pour l'accomplissement de la vision": "Pillars for Fulfilling the Vision",
+      "Piliers pour l'accomplissement de la vision": "Pillars That Bring the Vision to Pass",
       "13 septembre 2026": "September 13, 2026",
-      "Piliers pour l'accomplissement de la vision · EIPV": "Pillars for Fulfilling the Vision · EIPV",
+      "Piliers pour l'accomplissement de la vision · EIPV": "Pillars That Bring the Vision to Pass · EIPV",
       "9 septembre 2026": "September 9, 2026",
       "Poursuite de la vision": "Pursuing the Vision",
       "Poursuite de la vision · EIPV": "Pursuing the Vision · EIPV",
