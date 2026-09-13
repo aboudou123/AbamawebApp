@@ -109,9 +109,9 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
-      "Piliers pour l'accomplissement de la vision": "Pillars for the Fulfilment of the Vision",
+      "Piliers pour l'accomplissement de la vision": "Pillars for Fulfilling the Vision",
       "13 septembre 2026": "September 13, 2026",
-      "Piliers pour l'accomplissement de la vision · EIPV": "Pillars for the Fulfilment of the Vision · EIPV",
+      "Piliers pour l'accomplissement de la vision · EIPV": "Pillars for Fulfilling the Vision · EIPV",
       "9 septembre 2026": "September 9, 2026",
       "Poursuite de la vision": "Pursuing the Vision",
       "Poursuite de la vision · EIPV": "Pursuing the Vision · EIPV",
@@ -522,7 +522,7 @@
       "29 septembre au 4 octobre 2026": "29 September to 4 October 2026",
       ", sous le thème": ", on the theme",
       ". Six jours d'enseignement, de délivrance et de bénédiction avec l'Apôtre ABAMA Kossi François.": ". Six days of teaching, deliverance and blessing with Apostle ABAMA Kossi François.",
-      "Voir le programme complet": "See the full programme",
+      "Voir le programme complet": "See the full program",
       "Voir la vidéo": "Watch the video",
       "En vidéo": "On video",
       "Les annonces en vidéo": "Announcements on video",
