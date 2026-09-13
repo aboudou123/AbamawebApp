@@ -169,8 +169,14 @@ const SIGNATURE =
 const NAME_ONLY =
   /(?:ABAMA|Kossi|Fran.ois)(?:[\s.,]*(?:ABAMA|Kossi|Fran.ois))+/gi;
 
-/** Mots que la chaîne écrit sans accent : on rétablit l'orthographe du site. */
+/**
+ * Mots que la chaîne écrit sans accent ou mal orthographiés : on rétablit
+ * l'orthographe du site. Le pasteur tape ses titres vite, sur téléphone ; le
+ * site, lui, doit rester impeccable. On ne corrige que des fautes évidentes et
+ * confirmées, jamais le sens : « Pillers » → « Piliers » (validé le 13/09/2026).
+ */
 const ACCENTS = [
+  [/\bpillers?\b/gi, "piliers"],
   [/\bconference\b/gi, "Conférence"], [/\bapotheose\b/gi, "Apothéose"],
   [/\bedition\b/gi, "Édition"], [/\baout\b/gi, "Août"], [/\bfevrier\b/gi, "Février"],
   [/\bdecembre\b/gi, "Décembre"], [/\bpriere\b/gi, "prière"], [/\bverite\b/gi, "vérité"],
