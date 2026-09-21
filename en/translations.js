@@ -109,10 +109,10 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
-      "Célébrer la grâce de Dieu": "Célébrer la grâce de Dieu",
+      "Célébrer la grâce de Dieu": "Celebrating the Grace of God",
       "20 septembre 2026": "September 20, 2026",
       "Un temps de louange et d'adoration.": "A time of praise and worship.",
-      "Célébrer la grâce de Dieu · EIPV": "Célébrer la grâce de Dieu · EIPV",
+      "Célébrer la grâce de Dieu · EIPV": "Celebrating the Grace of God · EIPV",
       "Louange · Apôtre François Abama": "Worship · Apostle François Abama",
       "Piliers pour l'accomplissement de la vision": "Pillars That Bring the Vision to Pass",
       "13 septembre 2026": "September 13, 2026",
