@@ -10,3 +10,10 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Dépendances npm · NE JAMAIS committer.
+# Le déploiement recopie la racine du dépôt vers le serveur (mirror SFTP), et
+# la routine du dimanche fait « git add -A ». Sans cette ligne, node_modules
+# (2,5 Mo) partirait en ligne sur abamafrancois.org. Le site est 100 % statique :
+# une bibliothèque s'utilise en recopiant son bundle dans js/, pas via npm.
+node_modules/
