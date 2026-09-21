@@ -1,4 +1,4 @@
-const CACHE_VERSION = "eipv-pwa-v29";
+const CACHE_VERSION = "eipv-pwa-v30";
 
 /*
  * Fichiers qui portent du texte ou de la logique : feuille de style, scripts et
@@ -12,6 +12,7 @@ const REVALIDATE = [
   "/js/app.js",
   "/js/i18n.js",
   "/js/pwa.js",
+  "/js/anim.js",
   "/fr/translations.js",
   "/en/translations.js"
 ];
@@ -27,6 +28,7 @@ const APP_SHELL = [
   "/js/app.js",
   "/js/i18n.js",
   "/js/pwa.js",
+  "/js/anim.js",
   "/fr/translations.js",
   "/en/translations.js",
   "/manifest.json",
