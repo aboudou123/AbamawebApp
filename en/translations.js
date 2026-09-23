@@ -109,6 +109,9 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "43 ans d'appel au ministere apostolique": "43 ans d'appel au ministere apostolique",
+      "21 septembre 2026": "September 21, 2026",
+      "43 ans d'appel au ministere apostolique · EIPV": "43 ans d'appel au ministere apostolique · EIPV",
       "Célébrer la grâce de Dieu": "Celebrating the Grace of God",
       "20 septembre 2026": "September 20, 2026",
       "Un temps de louange et d'adoration.": "A time of praise and worship.",
