@@ -109,6 +109,12 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "Les principes pour accomplir la vision": "Les principes pour accomplir la vision",
+      "27 septembre 2026": "September 27, 2026",
+      "Les principes pour accomplir la vision · EIPV": "Les principes pour accomplir la vision · EIPV",
+      "Voix de la restauration": "Voix de la restauration",
+      "23 septembre 2026": "September 23, 2026",
+      "Voix de la restauration · EIPV": "Voix de la restauration · EIPV",
       "43 ans d'appel au ministere apostolique": "43 ans d'appel au ministere apostolique",
       "21 septembre 2026": "September 21, 2026",
       "43 ans d'appel au ministere apostolique · EIPV": "43 ans d'appel au ministere apostolique · EIPV",
