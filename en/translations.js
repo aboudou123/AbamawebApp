@@ -109,6 +109,13 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "Le secret du surnaturel": "Le secret du surnaturel",
+      "4 octobre 2026": "October 4, 2026",
+      "Le secret du surnaturel · EIPV": "Le secret du surnaturel · EIPV",
+      "Mois d'Octobre : vivre dans le surnaturel": "Mois d'Octobre : vivre dans le surnaturel",
+      "1 octobre 2026": "October 1, 2026",
+      "Mois d'Octobre : vivre dans le surnaturel · EIPV": "Mois d'Octobre : vivre dans le surnaturel · EIPV",
+      "30 septembre 2026": "September 30, 2026",
       "Les principes pour accomplir la vision": "Les principes pour accomplir la vision",
       "27 septembre 2026": "September 27, 2026",
       "Les principes pour accomplir la vision · EIPV": "Les principes pour accomplir la vision · EIPV",
