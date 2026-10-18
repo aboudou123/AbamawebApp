@@ -109,6 +109,7 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "14 octobre 2026": "October 14, 2026",
       "La Parole de Dieu et le surnaturel": "La Parole de Dieu et le surnaturel",
       "11 octobre 2026": "October 11, 2026",
       "La Parole de Dieu et le surnaturel · EIPV": "La Parole de Dieu et le surnaturel · EIPV",
