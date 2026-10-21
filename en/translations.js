@@ -109,6 +109,9 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "La puissance de la joie": "La puissance de la joie",
+      "18 octobre 2026": "October 18, 2026",
+      "La puissance de la joie · EIPV": "La puissance de la joie · EIPV",
       "14 octobre 2026": "October 14, 2026",
       "La Parole de Dieu et le surnaturel": "La Parole de Dieu et le surnaturel",
       "11 octobre 2026": "October 11, 2026",
