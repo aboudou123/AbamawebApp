@@ -109,6 +109,10 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "Dieu faiseur de l'homme": "Dieu faiseur de l'homme",
+      "25 octobre 2026": "October 25, 2026",
+      "Dieu faiseur de l'homme · EIPV": "Dieu faiseur de l'homme · EIPV",
+      "21 octobre 2026": "October 21, 2026",
       "La puissance de la joie": "La puissance de la joie",
       "18 octobre 2026": "October 18, 2026",
       "La puissance de la joie · EIPV": "La puissance de la joie · EIPV",
