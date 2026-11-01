@@ -109,6 +109,7 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "28 octobre 2026": "October 28, 2026",
       "Dieu faiseur de l'homme": "Dieu faiseur de l'homme",
       "25 octobre 2026": "October 25, 2026",
       "Dieu faiseur de l'homme · EIPV": "Dieu faiseur de l'homme · EIPV",
