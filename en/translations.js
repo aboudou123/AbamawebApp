@@ -109,6 +109,18 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "Louange pour l'intervention divine et vengeance": "Louange pour l'intervention divine et vengeance",
+      "15 novembre 2026": "November 15, 2026",
+      "Louange pour l'intervention divine et vengeance · EIPV": "Louange pour l'intervention divine et vengeance · EIPV",
+      "Bienvenue à la voix de la restauration": "Bienvenue à la voix de la restauration",
+      "11 novembre 2026": "November 11, 2026",
+      "Bienvenue à la voix de la restauration · EIPV": "Bienvenue à la voix de la restauration · EIPV",
+      "Restauration totale et jugement": "Restauration totale et jugement",
+      "8 novembre 2026": "November 8, 2026",
+      "Restauration totale et jugement · EIPV": "Restauration totale et jugement · EIPV",
+      "Le secret d'une restauration totale": "Le secret d'une restauration totale",
+      "1 novembre 2026": "November 1, 2026",
+      "Le secret d'une restauration totale · EIPV": "Le secret d'une restauration totale · EIPV",
       "28 octobre 2026": "October 28, 2026",
       "Dieu faiseur de l'homme": "Dieu faiseur de l'homme",
       "25 octobre 2026": "October 25, 2026",
