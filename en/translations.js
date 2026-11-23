@@ -109,6 +109,11 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "La puissance de la prière et du jeûne": "La puissance de la prière et du jeûne",
+      "22 novembre 2026": "November 22, 2026",
+      "Un temps de prière et d'intercession.": "A time of prayer and intercession.",
+      "La puissance de la prière et du jeûne · EIPV": "La puissance de la prière et du jeûne · EIPV",
+      "Prière · Apôtre François Abama": "Prayer · Apostle François Abama",
       "Louange pour l'intervention divine et vengeance": "Praise for Divine Intervention and Vengeance",
       "15 novembre 2026": "November 15, 2026",
       "Louange pour l'intervention divine et vengeance · EIPV": "Praise for Divine Intervention and Vengeance · EIPV",
