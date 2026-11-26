@@ -109,6 +109,9 @@
 
       /* Vidéos de la chaîne YouTube · mention « Nouveau » automatique */
       "Nouveau": "New",
+      "La voie de la vérité": "La voie de la vérité",
+      "25 novembre 2026": "November 25, 2026",
+      "La voie de la vérité · EIPV": "La voie de la vérité · EIPV",
       "La puissance de la prière et du jeûne": "La puissance de la prière et du jeûne",
       "22 novembre 2026": "November 22, 2026",
       "Un temps de prière et d'intercession.": "A time of prayer and intercession.",
